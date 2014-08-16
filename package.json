@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-showdown",
   "version": "0.0.0",
-  "description": "",
+  "description": "ember-cli addon that uses Showdown to transform markdown into HTLM",
   "author": "Giovanni Collazo - @gcollazo",
   "license": "MIT",
   "keywords": [
@@ -14,5 +14,13 @@
   "dependencies": {
     "broccoli-merge-trees": "^0.1.4",
     "showdown": "^0.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gcollazo/ember-cli-showdown.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gcollazo/ember-cli-showdown/issues"
+  },
+  "homepage": "https://github.com/gcollazo/ember-cli-showdown"
 }
