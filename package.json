@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-showdown",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "ember-cli addon that uses Showdown to transform markdown into HTLM",
   "author": "Giovanni Collazo - @gcollazo",
   "license": "MIT",
