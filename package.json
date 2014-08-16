@@ -1,0 +1,18 @@
+{
+  "name": "ember-cli-showdown",
+  "version": "0.0.0",
+  "description": "",
+  "author": "Giovanni Collazo - @gcollazo",
+  "license": "MIT",
+  "keywords": [
+    "ember-addon",
+    "showdown",
+    "markdown",
+    "helper"
+  ],
+  "main": "index.js",
+  "dependencies": {
+    "broccoli-merge-trees": "^0.1.4",
+    "showdown": "^0.3.1"
+  }
+}
