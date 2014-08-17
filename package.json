@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-showdown",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "ember-cli addon that uses Showdown to transform markdown into HTML",
   "author": "Giovanni Collazo - @gcollazo",
   "license": "MIT",
@@ -12,7 +12,6 @@
   ],
   "main": "index.js",
   "dependencies": {
-    "broccoli-merge-trees": "^0.1.4",
     "showdown": "^0.3.1"
   },
   "repository": {

@@ -1,8 +1,7 @@
 /* jshint node:true */
 'use strict';
 
-var path = require('path'),
-    mergeTrees = require('broccoli-merge-trees');
+var path = require('path');
 
 function ShowdownPlugin() {
   this.name = 'ember-cli-showdown';
@@ -16,15 +15,39 @@ function unwatchedTree(dir) {
 }
 
 ShowdownPlugin.prototype.treeFor = function(tree) {
-  if (tree !== 'vendor') { return; }
-  var treePath = path.join('node_modules', 'ember-cli-showdown', 'node_modules');
-  return unwatchedTree(treePath);
+  /*
+   * Return the path of a tree you want
+   * merged. This method will be called
+   * a few times, once for each of the
+   * following trees:
+   * app, vendor, templates, styles
+   *
+   * Paths returned here will be merged
+   * with the corresponding tree of the
+   * host application.
+   */
+
+  if (tree === 'app') {
+    // app tree
+    var appPath = path.join('node_modules', 'ember-cli-showdown', 'app');
+    return unwatchedTree(appPath);
+
+  } else if (tree === 'vendor') {
+    // vendor tree
+    var vendorPath = path.join('node_modules', 'ember-cli-showdown', 'node_modules');
+    return unwatchedTree(vendorPath);
+
+  } else {
+    // all other trees
+    return;
+  }
 };
 
 ShowdownPlugin.prototype.included = function(app) {
-  var addonApp = path.join('node_modules', 'ember-cli-showdown', 'app');
-  app.trees.app = mergeTrees([app.trees.app, addonApp], {overwrite: true});
-
+  /*
+   * Here you import assets that are
+   * already part of a tree.
+   */
   app.import('vendor/showdown/src/showdown.js');
 };
 
