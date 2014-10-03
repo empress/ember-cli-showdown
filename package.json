@@ -10,6 +10,10 @@
     "markdown",
     "helper"
   ],
+  "emberAddon": {
+    "private": false,
+    "categories": ["helper"]
+  },
   "main": "index.js",
   "dependencies": {
     "showdown": "^0.3.1"
