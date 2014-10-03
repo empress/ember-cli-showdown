@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-showdown",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "ember-cli addon that uses Showdown to transform markdown into HTML",
   "author": "Giovanni Collazo - @gcollazo",
   "license": "MIT",
@@ -12,7 +12,9 @@
   ],
   "emberAddon": {
     "private": false,
-    "categories": ["helper"]
+    "categories": [
+      "helper"
+    ]
   },
   "main": "index.js",
   "dependencies": {
