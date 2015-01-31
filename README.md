@@ -1,21 +1,23 @@
 ## ember-cli-showdown
 
-This addon adds [markdown](http://en.wikipedia.org/wiki/Markdown) to HTML compilation in the form of a bound Handlebars helper.
+This addon adds [markdown](http://en.wikipedia.org/wiki/Markdown) to HTML compilation in the form of a simple component.
 
 ### Installation / Usage
 
-From within your Ember CLI application (must be > 0.0.34), run the following:
+From within your Ember CLI application, run the following:
 
-```bash
+```
+ember install:npm ember-cli-showdown
+# or
 npm install --save-dev ember-cli-showdown
 ```
 
 Once installed you can use it on any template
 
-```handlebars
-{{showdown-addon '#Markdown is cool [link](google.com)'}}
+```
+{{markdown-to-html markdown='#Markdown is cool [link](http://emberjs.com)'}}
 {{!-- or --}}
-{{showdown-addon postContent}}
+{{showdown-addon markdown=postContent}}
 ```
 
 ### References
