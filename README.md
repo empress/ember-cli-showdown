@@ -21,5 +21,4 @@ Once installed you can use it on any template
 ```
 
 ### References
-
 * [Showdown](https://github.com/coreyti/showdown)
