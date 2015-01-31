@@ -1,24 +1,45 @@
-## ember-cli-showdown [![Build Status](https://travis-ci.org/gcollazo/ember-cli-showdown.svg?branch=master)](https://travis-ci.org/gcollazo/ember-cli-showdown)
+# Ember CLI Showdown [![Build Status](https://travis-ci.org/gcollazo/ember-cli-showdown.svg?branch=master)](https://travis-ci.org/gcollazo/ember-cli-showdown)
 
 This addon adds [markdown](http://en.wikipedia.org/wiki/Markdown) to HTML compilation in the form of a simple component.
 
-### Installation / Usage
-
+## Usage
 From within your Ember CLI application, run the following:
 
-```
-ember install:npm ember-cli-showdown
-# or
-npm install --save-dev ember-cli-showdown
-```
+- `ember install:addon ember-cli-showdown`
+- `ember generate ember-cli-showdown`
 
-Once installed you can use it on any template
+Passing a makrdown string inline:
 
-```
+```handlebars
 {{markdown-to-html markdown='#Markdown is cool [link](http://emberjs.com)'}}
-{{!-- or --}}
+```
+
+Passing a bound markdown value:
+
+```handlebars
 {{showdown-addon markdown=postContent}}
 ```
 
-### References
+## Dependencies
 * [Showdown](https://github.com/coreyti/showdown)
+
+## Development
+
+* `git clone https://github.com/gcollazo/ember-cli-showdown.git`
+* `cd ember-cli-showdown`
+* `npm install`
+* `bower install`
+
+## Previewing
+
+* `ember server`
+* Visit your app at http://localhost:4200.
+
+## Running Tests
+
+* `ember test`
+* `ember test --server`
+
+## Building
+
+* `ember build`

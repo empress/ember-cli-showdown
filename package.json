@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-showdown",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Ember component to render markdown into HTML.",
   "directories": {
     "doc": "doc",
