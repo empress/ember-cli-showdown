@@ -1,4 +1,4 @@
-## ember-cli-showdown
+## ember-cli-showdown [![Build Status](https://travis-ci.org/gcollazo/ember-cli-showdown.svg?branch=master)](https://travis-ci.org/gcollazo/ember-cli-showdown)
 
 This addon adds [markdown](http://en.wikipedia.org/wiki/Markdown) to HTML compilation in the form of a simple component.
 
