@@ -1,6 +1,6 @@
 # Ember CLI Showdown [![Build Status](https://travis-ci.org/gcollazo/ember-cli-showdown.svg?branch=master)](https://travis-ci.org/gcollazo/ember-cli-showdown)
 
-This addon adds [markdown](http://en.wikipedia.org/wiki/Markdown) to HTML compilation in the form of a simple component.
+This addon provides a component that transforms [Markdown](http://en.wikipedia.org/wiki/Markdown) into valid HTML.
 
 ## Usage
 From within your Ember CLI application, run the following:
@@ -14,10 +14,17 @@ Passing a makrdown string inline:
 {{markdown-to-html markdown='#Markdown is cool [link](http://emberjs.com)'}}
 ```
 
+```html
+<!-- Output -->
+<h1 id="markdowniscoollinkhttpemberjscom">Markdown is cool <a href="http://emberjs.com">link</a></h1>
+
+```
+
+
 Passing a bound markdown value:
 
 ```handlebars
-{{showdown-addon markdown=postContent}}
+{{markdown-to-html markdown=postContent}}
 ```
 
 ## Dependencies
