@@ -16,7 +16,7 @@ Passing a makrdown string inline:
 
 ```html
 <!-- Output -->
-<h1 id="markdowniscoollinkhttpemberjscom">Markdown is cool <a href="http://emberjs.com">link</a></h1>
+<h1>Markdown is cool <a href="http://emberjs.com">link</a></h1>
 
 ```
 
