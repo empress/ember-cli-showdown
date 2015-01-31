@@ -21,7 +21,7 @@ Passing a makrdown string inline:
 ```
 
 
-Passing a bound markdown value:
+You can also pass a bound value:
 
 ```handlebars
 {{markdown-to-html markdown=postContent}}
