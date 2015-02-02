@@ -8,7 +8,6 @@ This addon provides a component that transforms [Markdown](http://en.wikipedia.o
 From within your Ember CLI application, run the following:
 
 - `ember install:addon ember-cli-showdown`
-- `ember generate ember-cli-showdown`
 
 Passing a makrdown string inline:
 
