@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-showdown",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Ember component to render markdown into HTML.",
   "directories": {
     "doc": "doc",
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/gcollazo/ember-cli-showdown",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.12.0"
   },
   "author": "",
   "license": "MIT",
