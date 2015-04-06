@@ -14,7 +14,7 @@ From within your Ember CLI application, run the following:
 Passing a makrdown string inline:
 
 ```handlebars
-{{markdown-to-html markdown='#Markdown is cool [link](http://emberjs.com)'}}
+{{markdown-to-html markdown="#Markdown is cool [link](http://emberjs.com)"}}
 ```
 
 ```html
