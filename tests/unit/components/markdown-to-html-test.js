@@ -37,3 +37,18 @@ test('it produces markdown', function() {
   equal(component.get('html').toString(), expectedHtml);
   equal(component.$().html().toString().trim(), expectedHtml);
 });
+
+test('it inserts <br> tag', function() {
+  expect(1);
+
+  var component = this.subject();
+  this.append();
+
+  Ember.run(function() {
+    component.set('markdown', 'foo  \nbar');
+  });
+
+  var expectedHtml = '<p>foo <br />\nbar</p>';
+
+  equal(component.get('html').toString(), expectedHtml);
+});
