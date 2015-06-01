@@ -2,12 +2,14 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  afterInit: function() {
+  init: function() {
+    this._super();
     this.converter = new Showdown.converter();
-  }.on('init'),
+  },
 
-  html: function() {
+  html: Ember.computed('markdown', function() {
     var source = this.get('markdown') || '';
     return new Ember.Handlebars.SafeString(this.converter.makeHtml(source));
-  }.property('markdown')
+  })
+
 });
