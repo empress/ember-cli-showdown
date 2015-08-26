@@ -41,3 +41,21 @@ test('it inserts <br> tag', function(assert) {
 
   assert.equal(component.get('html').toString(), expectedHtml);
 });
+
+test('supports setting showdown options', function(assert) {
+  assert.expect(1);
+
+  var component = this.subject();
+  this.append();
+
+  Ember.run(function() {
+    component.set('markdown', '# title\nI ~~dislike~~ enjoy visiting http://www.google.com');
+    component.set('simplifiedAutoLink', true);
+    component.set('headerLevelStart', 3);
+    component.set('strikethrough', true);
+  });
+
+  var expectedHtml = '<h3 id="title">title</h3>\n\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
+
+  assert.equal(component.get('html').toString(), expectedHtml);
+});

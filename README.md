@@ -28,6 +28,20 @@ You can also pass a bound value:
 {{markdown-to-html markdown=postContent}}
 ```
 
+### Showdown Options
+
+You can use [configuration settings from Showdown][showdown-config]:
+
+```handlebars
+{{markdown-to-html
+  markdown=postContent
+  strikethrough=true
+  literalMidWordUnderscores=true
+  simplifiedAutoLink=true}}
+```
+
+[showdown-config]: https://github.com/showdownjs/showdown#valid-options
+
 ## Dependencies
 * [Showdown](https://github.com/showdownjs/showdown)
 
