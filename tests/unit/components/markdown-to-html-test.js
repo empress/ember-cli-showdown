@@ -2,12 +2,11 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 
 moduleForComponent('markdown-to-html', 'Unit | Component | markdown to html', {
-  // Specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar'],
   unit: true
 });
 
 test('it renders', function(assert) {
+  assert.expect(1);
   this.render();
   assert.equal(this.$().text().trim(), '');
 });
