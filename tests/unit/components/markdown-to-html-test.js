@@ -1,32 +1,22 @@
-import {
-  moduleForComponent,
-  test
-} from 'ember-qunit';
-
 import Ember from 'ember';
+import { moduleForComponent, test } from 'ember-qunit';
 
-moduleForComponent('markdown-to-html', 'MarkdownToHtmlComponent', {
-  // specify the other units that are required for this test
-  needs: ['component:markdown-to-html']
+moduleForComponent('markdown-to-html', 'Unit | Component | markdown to html', {
+  // Specify the other units that are required for this test
+  // needs: ['component:foo', 'helper:bar'],
+  unit: true
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
-
-  // creates the component instance
-  var component = this.subject(assert);
-  assert.equal(component._state, 'preRender');
-
-  // appends the component to the page
-  this.append();
-  assert.equal(component._state, 'inDOM');
+  this.render();
+  assert.equal(this.$().text().trim(), '');
 });
 
 test('it produces markdown', function(assert) {
   assert.expect(2);
 
   var component = this.subject();
-  this.append();
+  this.render();
 
   Ember.run(function() {
     component.set('markdown', '##Hello, [world](#)');
@@ -42,7 +32,7 @@ test('it inserts <br> tag', function(assert) {
   assert.expect(1);
 
   var component = this.subject();
-  this.append();
+  this.render();
 
   Ember.run(function() {
     component.set('markdown', 'foo  \nbar');

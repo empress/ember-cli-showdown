@@ -1,3 +1,1 @@
-import MarkdownToHtml from 'ember-cli-showdown/components/markdown-to-html';
-
-export default MarkdownToHtml;
+export { default } from 'ember-cli-showdown/components/markdown-to-html';
