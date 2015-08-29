@@ -9,7 +9,7 @@ This addon provides a component that transforms [Markdown](http://en.wikipedia.o
 ## Usage
 From within your Ember CLI application, run the following:
 
-- `ember install:addon ember-cli-showdown`
+- `ember install ember-cli-showdown`
 
 Passing a makrdown string inline:
 
@@ -20,9 +20,7 @@ Passing a makrdown string inline:
 ```html
 <!-- Output -->
 <h1>Markdown is cool <a href="http://emberjs.com">link</a></h1>
-
 ```
-
 
 You can also pass a bound value:
 
@@ -31,7 +29,7 @@ You can also pass a bound value:
 ```
 
 ## Dependencies
-* [Showdown](https://github.com/coreyti/showdown)
+* [Showdown](https://github.com/showdownjs/showdown)
 
 ## Development
 
