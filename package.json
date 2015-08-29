@@ -7,8 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build",
     "start": "ember server",
+    "build": "ember build",
     "test": "ember try:testall"
   },
   "repository": {
@@ -18,9 +18,7 @@
   "bugs": {
     "url": "https://github.com/gcollazo/ember-cli-showdown/issues"
   },
-  "homepage": {
-    "url": "https://github.com/gcollazo/ember-cli-showdown"
-  },
+  "homepage": "https://github.com/gcollazo/ember-cli-showdown",
   "engines": {
     "node": ">= 0.10.0"
   },
