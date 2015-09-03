@@ -42,6 +42,31 @@ You can use [configuration settings from Showdown][showdown-config]:
 
 [showdown-config]: https://github.com/showdownjs/showdown#valid-options
 
+### Showdown Extensions
+
+You can load [Showdown Extensions](showdown-extensions) by specifying the
+"extensions" property when initializing your component:
+
+```handlebars
+{{markdown-to-html
+  markdown=postContent
+  extensions=myExtensionList}}
+```
+(`myExtensionList` should be an array of extension names as strings)
+
+Note that you'll have to register your extensions with Showdown first.
+Here's an example:
+
+```js
+window.showdown.extension("demo", function() {
+  return [{
+    // ... your extension properties here ...
+  }];
+});
+```
+
+[showdown-extensions]: https://github.com/showdownjs/showdown/wiki/extensions
+
 ## Dependencies
 * [Showdown](https://github.com/showdownjs/showdown)
 

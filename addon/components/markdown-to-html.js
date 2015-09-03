@@ -4,7 +4,10 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   init: function() {
     this._super();
-    this.converter = new showdown.Converter();
+
+    this.converter = new showdown.Converter({
+      extensions: (this.get("extensions") || [])
+    });
   },
 
   html: Ember.computed('markdown', function() {
