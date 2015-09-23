@@ -59,3 +59,28 @@ test('supports setting showdown options', function(assert) {
 
   assert.equal(component.get('html').toString(), expectedHtml);
 });
+
+test('it supports loading showdown extensions', function(assert) {
+  assert.expect(1);
+
+  window.showdown.extension("demo", function() {
+    return [{
+      type: "lang",
+      regex: "this is an ember showdown!",
+      replace: function() {
+        return "no it isn't!";
+      }
+    }];
+  });
+
+  var component = this.subject({ extensions: ['demo'] });
+  this.append();
+
+  Ember.run(function() {
+    component.set("markdown", "this is an ember showdown!");
+  });
+
+  var expectedHtml = "<p>no it isn't!</p>";
+  assert.equal(component.get('html').toString(), expectedHtml);
+
+});
