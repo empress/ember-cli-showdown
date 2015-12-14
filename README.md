@@ -55,14 +55,25 @@ You can load [Showdown Extensions](showdown-extensions) by specifying the
 (`myExtensionList` should be an array of extension names as strings)
 
 Note that you'll have to register your extensions with Showdown first.
-Here's an example:
+For example, in an initializer:
 
 ```js
-window.showdown.extension("demo", function() {
-  return [{
-    // ... your extension properties here ...
-  }];
-});
+// app/initializers/register-showdown-extensions.js
+
+export function initialize() {
+  window.showdown.extension("myExtensionName", function() {
+    return [{
+      type: 'html',
+      regex: '<blockquote>',
+      replace: '<blockquote class="blockquote">'
+    }];
+  });
+}
+
+export default {
+  name: 'register-showdown-extensions',
+  initialize
+};
 ```
 
 [showdown-extensions]: https://github.com/showdownjs/showdown/wiki/extensions
