@@ -3,6 +3,7 @@
 {{textarea value=editableText}}
 {{markdown-to-html markdown=editableText}}
 
-{{markdown-to-html markdown='#Markdown is cool [link](google.com)'}}
+{{markdown-to-html markdown=(safestring-sub-expression '#Converting <em>SafeString</em> sub expressions to Markdown is cool <script>alert("nope")</script>')}}
+{{markdown-to-html markdown=(simple-sub-expression '#Converting simple sub expresions to Markdown is also cool [link](google.com)')}}
 
 {{outlet}}

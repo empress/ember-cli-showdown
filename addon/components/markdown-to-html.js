@@ -26,6 +26,16 @@ export default Ember.Component.extend({
       'tasklists',
       'smoothLivePreview'
     );
+    var markdown = this.get('markdown') || '';
+    var source;
+
+    if (markdown instanceof Ember.Handlebars.SafeString) {
+      source = markdown.toHTML();
+    } else if (Array.isArray(markdown)) {
+      source = markdown[0];
+    } else {
+      source = markdown;
+    }
 
     for (var option in showdownOptions) {
       if (showdownOptions.hasOwnProperty(option)) {
@@ -33,7 +43,6 @@ export default Ember.Component.extend({
       }
     }
 
-    var source = this.get('markdown') || '';
     return new Ember.Handlebars.SafeString(this.converter.makeHtml(source));
   })
 });
