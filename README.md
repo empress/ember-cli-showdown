@@ -11,7 +11,7 @@ From within your Ember CLI application, run the following:
 
 - `ember install ember-cli-showdown`
 
-Passing a makrdown string inline:
+Passing a markdown string inline:
 
 ```handlebars
 {{markdown-to-html markdown="#Markdown is cool [link](http://emberjs.com)"}}
