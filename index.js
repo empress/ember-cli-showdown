@@ -10,8 +10,13 @@ module.exports = {
   included: function showdownIncluded(app) {
     this._super.included.apply(this, arguments);
 
-    var bower = app.bowerDirectory;
+    if (!process.env.EMBER_CLI_FASTBOOT) {
+      // If this flag is present, the addon is being built in FastBoot
+      // The jQuery plugin causes FastBoot to crash, so only import in
+      // the browser build
+      var bower = app.bowerDirectory;
 
-    app.import(bower + '/showdown/dist/showdown.js');
+      app.import(bower + '/showdown/dist/showdown.js');
+    }
   }
 };
