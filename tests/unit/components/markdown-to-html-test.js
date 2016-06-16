@@ -84,3 +84,23 @@ test('it supports loading showdown extensions', function(assert) {
   assert.equal(component.get('html').toString(), expectedHtml);
 
 });
+
+
+test('it does not munge code fences', function(assert) {
+  assert.expect(1);
+
+  let component = this.subject();
+  this.append();
+
+  Ember.run(function() {
+    component.set("markdown", "```html" +
+     "<strong>hello</strong>\n" +
+     "<em>world</em>\n" +
+     "```");
+  });
+
+  let expectedHtml = "<p><code>html&lt;strong&gt;hello&lt;/strong&gt;\n" +
+        "&lt;em&gt;world&lt;/em&gt;\n" +
+        "</code></p>";
+  assert.equal(component.get('html').toString(), expectedHtml);
+});
