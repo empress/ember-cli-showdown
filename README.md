@@ -14,7 +14,7 @@ From within your Ember CLI application, run the following:
 Passing a makrdown string inline:
 
 ```handlebars
-{{markdown-to-html markdown="#Markdown is cool [link](http://emberjs.com)"}}
+{{markdown-to-html "#Markdown is cool [link](http://emberjs.com)"}}
 ```
 
 ```html
@@ -25,7 +25,7 @@ Passing a makrdown string inline:
 You can also pass a bound value:
 
 ```handlebars
-{{markdown-to-html markdown=postContent}}
+{{markdown-to-html postContent}}
 ```
 
 ### Showdown Options
@@ -52,7 +52,14 @@ You can load [Showdown Extensions](showdown-extensions) by specifying the
   markdown=postContent
   extensions=myExtensionList}}
 ```
-(`myExtensionList` should be an array of extension names as strings)
+
+```handlebars
+{{markdown-to-html
+  markdown=postContent
+  extensions='foo bar baz'}}
+```
+
+(`myExtensionList` can be an array of strings or a space separated string)
 
 Note that you'll have to register your extensions with Showdown first.
 For example, in an initializer:

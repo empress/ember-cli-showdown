@@ -1,39 +1,48 @@
 /* global showdown */
 import Ember from 'ember';
+import hbs from 'htmlbars-inline-precompile';
 
-export default Ember.Component.extend({
-  init: function() {
-    this._super();
+const { computed, get, Handlebars } = Ember;
 
-    this.converter = new showdown.Converter({
-      extensions: (this.get("extensions") || [])
-    });
-  },
+const ShowdownComponent = Ember.Component.extend({
+  layout: hbs`{{html}}`,
+  markdown: '',
 
-  html: Ember.computed('markdown', function() {
-    var showdownOptions = this.getProperties(
-      'omitExtraWLInCodeBlocks',
-      'noHeaderId',
-      'prefixHeaderId',
-      'parseImgDimensions',
-      'headerLevelStart',
-      'simplifiedAutoLink',
-      'literalMidWordUnderscores',
-      'strikethrough',
-      'tables',
-      'tablesHeaderId',
-      'ghCodeBlocks',
-      'tasklists',
-      'smoothLivePreview'
-    );
+  extensions: computed(function() {
+    return [];
+  }),
 
-    for (var option in showdownOptions) {
+  defaultOptionKeys: computed(function() {
+    return Object.keys(showdown.getDefaultOptions());
+  }).readOnly(),
+
+  html: computed('markdown', function() {
+    let showdownOptions = this.getProperties(get(this, 'defaultOptionKeys'));
+
+    for (let option in showdownOptions) {
       if (showdownOptions.hasOwnProperty(option)) {
         this.converter.setOption(option, showdownOptions[option]);
       }
     }
 
-    var source = this.get('markdown') || '';
-    return new Ember.Handlebars.SafeString(this.converter.makeHtml(source));
-  })
+    return new Handlebars.SafeString(this.converter.makeHtml(get(this, 'markdown')));
+  }).readOnly(),
+
+  didReceiveAttrs() {
+    this._super(...arguments);
+
+    let extensions = get(this, 'extensions');
+
+    if (typeof extensions === 'string') {
+      extensions = extensions.split(' ');
+    }
+
+    this.converter = new showdown.Converter({ extensions });
+  }
 });
+
+ShowdownComponent.reopenClass({
+  positionalParams: ['markdown']
+});
+
+export default ShowdownComponent;
