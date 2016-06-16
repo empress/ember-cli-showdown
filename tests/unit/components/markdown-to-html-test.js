@@ -27,6 +27,22 @@ test('it produces markdown', function(assert) {
   assert.equal(component.$().html().toString().trim(), expectedHtml);
 });
 
+test('it produces markdown from a Handlebars sub-expression that returns a SafeString', function(assert) {
+  assert.expect(2);
+
+  var component = this.subject();
+  this.render();
+
+  Ember.run(function() {
+    component.set('markdown', Ember.String.htmlSafe('##Hello, <em>strange</em>[world](#)'));
+  });
+
+  var expectedHtml = '<h2 id="helloemstrangeemworld">Hello, <em>strange</em><a href="#">world</a></h2>';
+
+  assert.equal(component.get('html').toHTML(), expectedHtml);
+  assert.equal(component.$().html().toString().trim(), expectedHtml);
+});
+
 test('it inserts <br> tag', function(assert) {
   assert.expect(1);
 
