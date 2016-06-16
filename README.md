@@ -68,7 +68,7 @@ For example, in an initializer:
 // app/initializers/register-showdown-extensions.js
 
 export function initialize() {
-  window.showdown.extension("myExtensionName", function() {
+  showdown.extension("myExtensionName", function() {
     return [{
       type: 'html',
       regex: '<blockquote>',
