@@ -1,8 +1,13 @@
 'use strict';
 
+var RSVP = require('rsvp');
+
 module.exports = {
   normalizeEntityName: function () {},
   afterInstall: function () {
-    return this.addBowerPackageToProject('showdown');
+    return RSVP.hash({
+      browser: this.addBowerPackageToProject('showdown'),
+      node: this.addPackageToProject('showdown')
+    });
   }
 };
