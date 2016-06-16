@@ -1,3 +1,4 @@
+/* globals showdown */
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 
@@ -14,14 +15,14 @@ test('it renders', function(assert) {
 test('it produces markdown', function(assert) {
   assert.expect(2);
 
-  var component = this.subject();
+  let component = this.subject();
   this.render();
 
   Ember.run(function() {
     component.set('markdown', '##Hello, [world](#)');
   });
 
-  var expectedHtml = '<h2 id="helloworld">Hello, <a href="#">world</a></h2>';
+  let expectedHtml = '<h2 id="helloworld">Hello, <a href="#">world</a></h2>';
 
   assert.equal(component.get('html').toString(), expectedHtml);
   assert.equal(component.$().html().toString().trim(), expectedHtml);
@@ -30,14 +31,14 @@ test('it produces markdown', function(assert) {
 test('it inserts <br> tag', function(assert) {
   assert.expect(1);
 
-  var component = this.subject();
+  let component = this.subject();
   this.render();
 
   Ember.run(function() {
     component.set('markdown', 'foo  \nbar');
   });
 
-  var expectedHtml = '<p>foo <br />\nbar</p>';
+  let expectedHtml = '<p>foo <br />\nbar</p>';
 
   assert.equal(component.get('html').toString(), expectedHtml);
 });
@@ -45,7 +46,7 @@ test('it inserts <br> tag', function(assert) {
 test('supports setting showdown options', function(assert) {
   assert.expect(1);
 
-  var component = this.subject();
+  let component = this.subject();
   this.append();
 
   Ember.run(function() {
@@ -55,7 +56,7 @@ test('supports setting showdown options', function(assert) {
     component.set('strikethrough', true);
   });
 
-  var expectedHtml = '<h3 id="title">title</h3>\n\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
+  let expectedHtml = '<h3 id="title">title</h3>\n\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
 
   assert.equal(component.get('html').toString(), expectedHtml);
 });
@@ -63,24 +64,57 @@ test('supports setting showdown options', function(assert) {
 test('it supports loading showdown extensions', function(assert) {
   assert.expect(1);
 
-  window.showdown.extension("demo", function() {
+  showdown.extension("demo", function() {
     return [{
       type: "lang",
       regex: "this is an ember showdown!",
-      replace: function() {
+      replace() {
         return "no it isn't!";
       }
     }];
   });
 
-  var component = this.subject({ extensions: ['demo'] });
+  let component = this.subject({ extensions: ['demo'] });
   this.append();
 
   Ember.run(function() {
     component.set("markdown", "this is an ember showdown!");
   });
 
-  var expectedHtml = "<p>no it isn't!</p>";
+  let expectedHtml = "<p>no it isn't!</p>";
   assert.equal(component.get('html').toString(), expectedHtml);
+});
 
+test('it supports loading showdown extensions', function(assert) {
+  assert.expect(1);
+
+  showdown.extension("demo", function() {
+    return [{
+      type: "lang",
+      regex: /\sa\s/,
+      replace() {
+        return " an ember ";
+      }
+    }];
+  });
+
+  showdown.extension("excited", function() {
+    return [{
+      type: "lang",
+      regex: /showdown/,
+      replace() {
+        return "showdown!";
+      }
+    }];
+  });
+
+  let component = this.subject({ extensions: 'demo excited' });
+  this.append();
+
+  Ember.run(function() {
+    component.set("markdown", "this is a showdown");
+  });
+
+  let expectedHtml = "<p>this is an ember showdown!</p>";
+  assert.equal(component.get('html').toString(), expectedHtml);
 });
