@@ -35,13 +35,13 @@ const ShowdownComponent = Ember.Component.extend({
       extensions = extensions.split(' ');
     }
 
-    this.converter = new showdown.Converter({ extensions });
+    return new showdown.Converter({ extensions });
   },
 
   didReceiveAttrs() {
     this._super(...arguments);
 
-    this.createConverter();
+    this.converter = this.createConverter();
   }
 });
 
