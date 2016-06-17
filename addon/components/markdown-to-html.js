@@ -27,10 +27,8 @@ const ShowdownComponent = Ember.Component.extend({
 
     return new Handlebars.SafeString(this.converter.makeHtml(get(this, 'markdown')));
   }).readOnly(),
-
-  didReceiveAttrs() {
-    this._super(...arguments);
-
+  
+  createConverter() {
     let extensions = get(this, 'extensions');
 
     if (typeof extensions === 'string') {
@@ -38,6 +36,12 @@ const ShowdownComponent = Ember.Component.extend({
     }
 
     this.converter = new showdown.Converter({ extensions });
+  },
+
+  didReceiveAttrs() {
+    this._super(...arguments);
+
+    this.createConverter();
   }
 });
 
