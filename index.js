@@ -17,7 +17,10 @@ module.exports = {
   },
 
   included: function showdownIncluded(app) {
-    this._super.included.apply(this, arguments);
+    if (app.app) {
+      app = app.app;
+    }
+    this._super.included.call(this, app);
 
     if (isFastBoot()) {
       this.importFastBootDependencies(app);
