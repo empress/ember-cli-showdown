@@ -19,6 +19,11 @@ module.exports = {
   included: function showdownIncluded(app) {
     this._super.included.apply(this, arguments);
 
+    // support for using ember-cli-showdown as a deeply nested addon
+    if (typeof app.import !== 'function' && app.app) {
+      app = app.app;
+    }
+
     if (isFastBoot()) {
       this.importFastBootDependencies(app);
     } else {
