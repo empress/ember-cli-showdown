@@ -19,15 +19,12 @@ module.exports = {
   included: function showdownIncluded(app) {
     this._super.included.apply(this, arguments);
 
-    // support for using ember-cli-showdown as a deeply nested addon
-    if (typeof app.import !== 'function' && app.app) {
-      app = app.app;
-    }
+    var host = this._findHost();
 
     if (isFastBoot()) {
-      this.importFastBootDependencies(app);
+      this.importFastBootDependencies(host);
     } else {
-      this.importBrowserDependencies(app);
+      this.importBrowserDependencies(host);
     }
   },
 
@@ -52,13 +49,13 @@ module.exports = {
     var whitelist = pkg.fastbootDependencies;
 
     if (!whitelist || whitelist && !~whitelist.indexOf('showdown')) {
-      throw new Error("[ember-cli-showdown] showdown is missing from package.json's fastbootDependencies.\nSee: https://github.com/ember-fastboot/ember-cli-fastboot#whitelisting-packages")
+      throw new Error("[ember-cli-showdown] showdown is missing from package.json's fastbootDependencies.\nSee: https://github.com/ember-fastboot/ember-cli-fastboot#whitelisting-packages");
     }
 
-    app.import('vendor/fastboot-showdown.js');
+    this.import('vendor/fastboot-showdown.js');
   },
 
   importBrowserDependencies: function(app) {
-    app.import(app.bowerDirectory + '/showdown/dist/showdown.js');
+    this.import(app.bowerDirectory + '/showdown/dist/showdown.js');
   }
 };
