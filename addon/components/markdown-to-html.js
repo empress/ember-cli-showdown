@@ -25,9 +25,9 @@ const ShowdownComponent = Ember.Component.extend({
       }
     }
 
-    return new Handlebars.SafeString(this.converter.makeHtml(get(this, 'markdown')));
+    return Ember.String.htmlSafe(this.converter.makeHtml(get(this, 'markdown')));
   }).readOnly(),
-  
+
   createConverter() {
     let extensions = get(this, 'extensions');
 
