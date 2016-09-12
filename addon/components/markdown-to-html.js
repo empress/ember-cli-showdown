@@ -2,7 +2,7 @@
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 
-const { computed, get, Handlebars } = Ember;
+const { computed, get } = Ember;
 
 const ShowdownComponent = Ember.Component.extend({
   layout: hbs`{{html}}`,
@@ -25,9 +25,9 @@ const ShowdownComponent = Ember.Component.extend({
       }
     }
 
-    return new Handlebars.SafeString(this.converter.makeHtml(get(this, 'markdown')));
+    return Ember.String.htmlSafe(this.converter.makeHtml(get(this, 'markdown')));
   }).readOnly(),
-  
+
   createConverter() {
     let extensions = get(this, 'extensions');
 
