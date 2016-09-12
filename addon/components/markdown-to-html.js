@@ -2,7 +2,7 @@
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 
-const { computed, get, Handlebars } = Ember;
+const { computed, get } = Ember;
 
 const ShowdownComponent = Ember.Component.extend({
   layout: hbs`{{html}}`,
