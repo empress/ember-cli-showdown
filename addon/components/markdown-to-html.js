@@ -25,7 +25,10 @@ const ShowdownComponent = Ember.Component.extend({
       }
     }
 
-    return Ember.String.htmlSafe(this.converter.makeHtml(get(this, 'markdown')));
+    const markdown = get(this, 'markdown');
+    const markdownString = Ember.String.isHTMLSafe(markdown) ? markdown.string : markdown;
+
+    return Ember.String.htmlSafe(this.converter.makeHtml(markdownString));
   }).readOnly(),
 
   createConverter() {
