@@ -44,7 +44,7 @@ You can use [configuration settings from Showdown][showdown-config]:
 
 ### Showdown Extensions
 
-You can load [Showdown Extensions](showdown-extensions) by specifying the
+You can load [Showdown Extensions](https://github.com/showdownjs/showdown/wiki/extensions) by specifying the
 "extensions" property when initializing your component:
 
 ```handlebars
