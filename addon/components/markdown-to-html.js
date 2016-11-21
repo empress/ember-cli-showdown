@@ -16,19 +16,20 @@ const ShowdownComponent = Ember.Component.extend({
     return Object.keys(showdown.getDefaultOptions());
   }).readOnly(),
 
-  html: computed('markdown', function() {
+  html: computed('markdown', 'converter', function() {
     let showdownOptions = this.getProperties(get(this, 'defaultOptionKeys'));
-
+    let converter = get(this, 'converter');
+ 
     for (let option in showdownOptions) {
       if (showdownOptions.hasOwnProperty(option)) {
-        this.converter.setOption(option, showdownOptions[option]);
+        converter.setOption(option, showdownOptions[option]);
       }
     }
 
-    return Ember.String.htmlSafe(this.converter.makeHtml(get(this, 'markdown')));
+    return Ember.String.htmlSafe(converter.makeHtml(get(this, 'markdown')));
   }).readOnly(),
 
-  createConverter() {
+  converter: computed('extensions', function() {
     let extensions = get(this, 'extensions');
 
     if (typeof extensions === 'string') {
@@ -36,13 +37,7 @@ const ShowdownComponent = Ember.Component.extend({
     }
 
     return new showdown.Converter({ extensions });
-  },
-
-  didReceiveAttrs() {
-    this._super(...arguments);
-
-    this.converter = this.createConverter();
-  }
+  })
 });
 
 ShowdownComponent.reopenClass({
