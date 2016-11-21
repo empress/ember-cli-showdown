@@ -58,6 +58,9 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "demoURL": "https://gcollazo.github.io/ember-cli-showdown/"
+    "demoURL": "https://gcollazo.github.io/ember-cli-showdown/",
+    "fastbootDependencies": [
+      "showdown"
+    ]
   }
 }
