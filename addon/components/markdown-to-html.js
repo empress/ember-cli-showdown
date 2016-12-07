@@ -19,9 +19,9 @@ const ShowdownComponent = Ember.Component.extend({
   html: computed('markdown', 'converter', function() {
     let showdownOptions = this.getProperties(get(this, 'defaultOptionKeys'));
     let converter = get(this, 'converter');
- 
+
     for (let option in showdownOptions) {
-      if (showdownOptions.hasOwnProperty(option)) {
+      if (showdownOptions.hasOwnProperty(option) && (typeof showdownOptions[option]) !== 'undefined') {
         converter.setOption(option, showdownOptions[option]);
       }
     }
