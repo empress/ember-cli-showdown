@@ -56,9 +56,29 @@ test('supports setting showdown options', function(assert) {
     component.set('strikethrough', true);
   });
 
-  let expectedHtml = '<h3 id="title">title</h3>\n\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
+  let expectedHtml = '<h3 id="title">title</h3>\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
 
   assert.equal(component.get('html').toString(), expectedHtml);
+});
+
+test('does not reset default showdown options with undefined', function(assert) {
+  assert.expect(1);
+
+  let originalStrikeThroughValue = showdown.getOption('strikethrough');
+  showdown.setOption('strikethrough', true);
+
+  let component = this.subject();
+  this.append();
+
+  Ember.run(function() {
+    component.set('markdown', '~~dislike~~');
+  });
+
+  let expectedHtml = '<p><del>dislike</del></p>';
+
+  assert.equal(component.get('html').toString(), expectedHtml);
+
+  showdown.setOption('strikethrough', originalStrikeThroughValue);
 });
 
 test('it supports loading showdown extensions', function(assert) {
@@ -127,14 +147,10 @@ test('it does not munge code fences', function(assert) {
   this.append();
 
   Ember.run(function() {
-    component.set("markdown", "```html" +
-     "<strong>hello</strong>\n" +
-     "<em>world</em>\n" +
-     "```");
+    component.set("ghCodeBlocks", true);
+    component.set("markdown", "```html\n<strong>hello</strong>\n<em>world</em>\n```");
   });
 
-  let expectedHtml = "<p><code>html&lt;strong&gt;hello&lt;/strong&gt;\n" +
-        "&lt;em&gt;world&lt;/em&gt;\n" +
-        "</code></p>";
+  let expectedHtml = "<pre><code class=\"html language-html\">&lt;strong&gt;hello&lt;/strong&gt;\n&lt;em&gt;world&lt;/em&gt;\n</code></pre>";
   assert.equal(component.get('html').toString(), expectedHtml);
 });
