@@ -85,6 +85,27 @@ test('it supports loading showdown extensions', function(assert) {
   assert.equal(component.get('html').toString(), expectedHtml);
 });
 
+test('does not reset default showdown options with undefined', function(assert) {
+  assert.expect(1);
+
+  let originalStrikeThroughValue = showdown.getOption('strikethrough');
+  showdown.setOption('strikethrough', true);
+
+  let component = this.subject();
+  this.append();
+
+  Ember.run(function() {
+    component.set('markdown', '~~dislike~~');
+  });
+
+  let expectedHtml = '<p><del>dislike</del></p>';
+
+  assert.equal(component.get('html').toString(), expectedHtml);
+
+  showdown.setOption('strikethrough', originalStrikeThroughValue);
+});
+
+
 test('it supports loading showdown extensions', function(assert) {
   assert.expect(1);
 
