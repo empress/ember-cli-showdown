@@ -38,9 +38,10 @@ test('it inserts <br> tag', function(assert) {
     component.set('markdown', 'foo  \nbar');
   });
 
-  let expectedHtml = '<p>foo <br />\nbar</p>';
+  let expectedHtmlRegex = /<p>foo ?<br \/>\nbar<\/p>/;
+  let actualHtml = component.get('html').toString();
 
-  assert.equal(component.get('html').toString(), expectedHtml);
+  assert.ok(expectedHtmlRegex.test(actualHtml));
 });
 
 test('supports setting showdown options', function(assert) {
