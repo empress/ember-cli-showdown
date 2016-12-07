@@ -20,7 +20,7 @@ const ShowdownComponent = Ember.Component.extend({
     let showdownOptions = this.getProperties(get(this, 'defaultOptionKeys'));
 
     for (let option in showdownOptions) {
-      if (showdownOptions.hasOwnProperty(option)) {
+      if (showdownOptions.hasOwnProperty(option) && (typeof showdownOptions[option]) !== 'undefined') {
         this.converter.setOption(option, showdownOptions[option]);
       }
     }
