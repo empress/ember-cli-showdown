@@ -127,14 +127,10 @@ test('it does not munge code fences', function(assert) {
   this.append();
 
   Ember.run(function() {
-    component.set("markdown", "```html" +
-     "<strong>hello</strong>\n" +
-     "<em>world</em>\n" +
-     "```");
+    component.set("ghCodeBlocks", true);
+    component.set("markdown", "```html\n<strong>hello</strong>\n<em>world</em>\n```");
   });
 
-  let expectedHtml = "<p><code>html&lt;strong&gt;hello&lt;/strong&gt;\n" +
-        "&lt;em&gt;world&lt;/em&gt;\n" +
-        "</code></p>";
+  let expectedHtml = "<pre><code class=\"html language-html\">&lt;strong&gt;hello&lt;/strong&gt;\n&lt;em&gt;world&lt;/em&gt;\n</code></pre>";
   assert.equal(component.get('html').toString(), expectedHtml);
 });
