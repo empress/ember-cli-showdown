@@ -56,7 +56,7 @@ test('supports setting showdown options', function(assert) {
     component.set('strikethrough', true);
   });
 
-  let expectedHtml = '<h3 id="title">title</h3>\n\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
+  let expectedHtml = '<h3 id="title">title</h3>\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
 
   assert.equal(component.get('html').toString(), expectedHtml);
 });
