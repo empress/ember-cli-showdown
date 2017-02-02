@@ -2,11 +2,21 @@
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 
-const { computed, get } = Ember;
+const { computed, get, merge, getOwner } = Ember;
+const CONFIG_LOOKUP = 'config:environment';
+
+let assign = Ember.assign;
+
+if (!assign) {
+  assign = function assignPolyfill(...objects) {
+    return objects.reduce(merge);
+  };
+}
 
 const ShowdownComponent = Ember.Component.extend({
   layout: hbs`{{html}}`,
   markdown: '',
+  _globalOptions: null,
 
   extensions: computed(function() {
     return [];
@@ -16,8 +26,17 @@ const ShowdownComponent = Ember.Component.extend({
     return Object.keys(showdown.getDefaultOptions());
   }).readOnly(),
 
+  init() {
+    this._super(...arguments);
+    const owner = getOwner(this);
+
+    if (owner && owner.hasRegistration(CONFIG_LOOKUP)) {
+      this._globalOptions = (owner.resolveRegistration(CONFIG_LOOKUP) || {}).showdown;
+    }
+  },
+
   html: computed('markdown', 'converter', function() {
-    let showdownOptions = this.getProperties(get(this, 'defaultOptionKeys'));
+    let showdownOptions = this.getShowdownProperties(get(this, 'defaultOptionKeys'));
     let converter = get(this, 'converter');
 
     for (let option in showdownOptions) {
@@ -37,7 +56,21 @@ const ShowdownComponent = Ember.Component.extend({
     }
 
     return new showdown.Converter({ extensions });
-  })
+  }),
+
+  getShowdownProperties(keyNames) {
+    return keyNames.reduce((accumulator, keyName) => {
+      let value = get(this, keyName);
+
+      if (value === undefined && this._globalOptions) {
+        value = get(this._globalOptions, keyName);
+      }
+
+      accumulator[keyName] = value;
+
+      return accumulator;
+    }, {});
+  }
 });
 
 ShowdownComponent.reopenClass({

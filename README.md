@@ -42,6 +42,26 @@ You can use [configuration settings from Showdown][showdown-config]:
 
 [showdown-config]: https://github.com/showdownjs/showdown#valid-options
 
+#### Global Showdown Options
+
+Global options are supported as of 2.11.x.  This lets you define options that will be used
+for showdown options that were not provided as an attribute.
+
+An example where you always want to auto link:
+
+```js
+// config/environment.js
+module.exports = function(environment) {
+  var ENV = {
+    showdown: {
+      simplifiedAutoLink: true
+    }
+  }
+
+  return ENV;
+}
+```
+
 ### Showdown Extensions
 
 You can load [Showdown Extensions](https://github.com/showdownjs/showdown/wiki/extensions) by specifying the
