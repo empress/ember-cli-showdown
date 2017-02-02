@@ -19,20 +19,7 @@ module.exports = {
   included: function showdownIncluded(app) {
     this._super.included.apply(this, arguments);
 
-    var host;
-
-    // If the addon has the _findHost() method (in ember-cli >= 2.7.0), we'll just
-    // use that.
-    if (typeof this._findHost === 'function') {
-      host = this._findHost();
-    } else {
-      // Otherwise, we'll use this implementation borrowed from the _findHost()
-      // method in ember-cli.
-      var current = this;
-      do {
-        host = current.app || host;
-      } while (current.parent.parent && (current = current.parent));
-    }
+    var host = this._findHost();
 
     if (isFastBoot()) {
       this.importFastBootDependencies(host);

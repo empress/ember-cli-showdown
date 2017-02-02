@@ -62,6 +62,29 @@ test('supports setting showdown options', function(assert) {
   assert.equal(component.get('html').toString(), expectedHtml);
 });
 
+test('supports setting showdown options merged with global options', function(assert) {
+  assert.expect(1);
+
+  this.register('config:environment', {
+    showdown: {
+      simplifiedAutoLink: true
+    }
+  });
+
+  let component = this.subject();
+  this.append();
+
+  Ember.run(function() {
+    component.set('markdown', '# title\nI ~~dislike~~ enjoy visiting http://www.google.com');
+    component.set('headerLevelStart', 3);
+    component.set('strikethrough', true);
+  });
+
+  let expectedHtml = '<h3 id="title">title</h3>\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
+
+  assert.equal(component.get('html').toString(), expectedHtml);
+});
+
 test('it supports loading showdown extensions', function(assert) {
   assert.expect(1);
 
