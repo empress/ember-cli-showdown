@@ -12,10 +12,6 @@ function isFastBoot() {
 module.exports = {
   name: 'ember-cli-showdown',
 
-  blueprintsPath: function () {
-    return __dirname + '/blueprints';
-  },
-
   included: function showdownIncluded(app) {
     this._super.included.apply(this, arguments);
 
@@ -41,6 +37,10 @@ module.exports = {
       }));
     }
 
+    trees.push(funnel(path.dirname(require.resolve('showdown/dist/showdown.js')), {
+      files: ['showdown.js'],
+    }));
+
     return mergeTrees(trees);
   },
 
@@ -56,6 +56,6 @@ module.exports = {
   },
 
   importBrowserDependencies: function(app) {
-    this.import(app.bowerDirectory + '/showdown/dist/showdown.js');
+    this.import('vendor/showdown.js');
   }
 };
