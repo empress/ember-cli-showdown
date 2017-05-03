@@ -1,6 +1,6 @@
 /* global showdown */
 import Ember from 'ember';
-import hbs from 'htmlbars-inline-precompile';
+import layout from '../templates/components/markdown-to-html';
 
 const { computed, get, merge, getOwner } = Ember;
 const CONFIG_LOOKUP = 'config:environment';
@@ -14,7 +14,7 @@ if (!assign) {
 }
 
 const ShowdownComponent = Ember.Component.extend({
-  layout: hbs`{{html}}`,
+  layout,
   markdown: '',
   _globalOptions: null,
 
