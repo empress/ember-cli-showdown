@@ -48,7 +48,7 @@ test('supports setting showdown options', function(assert) {
   assert.expect(1);
 
   let component = this.subject();
-  this.append();
+  this.render();
 
   Ember.run(function() {
     component.set('markdown', '# title\nI ~~dislike~~ enjoy visiting http://www.google.com');
@@ -72,7 +72,7 @@ test('supports setting showdown options merged with global options', function(as
   });
 
   let component = this.subject();
-  this.append();
+  this.render();
 
   Ember.run(function() {
     component.set('markdown', '# title\nI ~~dislike~~ enjoy visiting http://www.google.com');
@@ -99,7 +99,7 @@ test('it supports loading showdown extensions', function(assert) {
   });
 
   let component = this.subject({ extensions: ['demo'] });
-  this.append();
+  this.render();
 
   Ember.run(function() {
     component.set("markdown", "this is an ember showdown!");
@@ -116,7 +116,7 @@ test('does not reset default showdown options with undefined', function(assert) 
   showdown.setOption('strikethrough', true);
 
   let component = this.subject();
-  this.append();
+  this.render();
 
   Ember.run(function() {
     component.set('markdown', '~~dislike~~');
@@ -154,7 +154,7 @@ test('it supports loading showdown extensions', function(assert) {
   });
 
   let component = this.subject({ extensions: 'demo excited' });
-  this.append();
+  this.render();
 
   Ember.run(function() {
     component.set("markdown", "this is a showdown");
@@ -169,7 +169,7 @@ test('it does not munge code fences', function(assert) {
   assert.expect(1);
 
   let component = this.subject();
-  this.append();
+  this.render();
 
   Ember.run(function() {
     component.set("ghCodeBlocks", true);
