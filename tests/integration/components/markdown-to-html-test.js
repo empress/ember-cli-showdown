@@ -10,5 +10,5 @@ test('positional parameter', function(assert) {
 
   this.set('markdown', '*hello world*');
   this.render(hbs`{{markdown-to-html markdown}}`);
-  assert.equal(this.$('> *').html(), '<p><em>hello world</em></p>');
+  assert.equal(this.$('> *').html().trim(), '<p><em>hello world</em></p>');
 });
