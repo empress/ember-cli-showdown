@@ -15,7 +15,7 @@
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/gcollazo/ember-cli-showdown",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
