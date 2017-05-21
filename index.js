@@ -12,7 +12,7 @@ function isFastBoot() {
 module.exports = {
   name: 'ember-cli-showdown',
 
-  included(app) {
+  included() {
     this._super.included.apply(this, arguments);
 
     let host = this._findHost();
@@ -32,7 +32,7 @@ module.exports = {
     }
 
     trees.push(funnel(path.dirname(require.resolve('showdown/dist/showdown.js')), {
-      files: ['showdown.js'],
+      files: ['showdown.js', 'showdown.js.map'],
     }));
 
     if (isFastBoot()) {
@@ -55,7 +55,7 @@ module.exports = {
     this.import('vendor/fastboot-showdown.js');
   },
 
-  importBrowserDependencies(app) {
+  importBrowserDependencies() {
     this.import('vendor/showdown.js');
   }
 };
