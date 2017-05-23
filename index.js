@@ -5,7 +5,8 @@ const path = require('path');
 const funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
 
-function isFastBoot() {
+// <= fastboot-beta
+function legacyIsFastboot() {
   return process.env.EMBER_CLI_FASTBOOT === 'true';
 }
 
@@ -17,11 +18,18 @@ module.exports = {
 
     let host = this._findHost();
 
-    if (isFastBoot()) {
-      this.importFastBootDependencies(host);
+    if (legacyIsFastboot()) {
+      this.legacyImportFastBootDependencies(host);
     } else {
       this.importBrowserDependencies(host);
     }
+  },
+
+  // >= fastboot-rc
+  updateFastBootManifest(manifest) {
+    manifest.vendorFiles.unshift('ember-cli-showdown/fastboot-showdown.js');
+
+    return manifest;
   },
 
   treeForVendor(vendorTree) {
@@ -32,11 +40,11 @@ module.exports = {
     }
 
     trees.push(funnel(path.dirname(require.resolve('showdown/dist/showdown.js')), {
-      files: ['showdown.js', 'showdown.js.map'],
+      files: ['showdown.js', 'showdown.js.map']
     }));
 
-    if (isFastBoot()) {
-      trees.push(funnel(path.join(__dirname, './assets'), {
+    if (legacyIsFastboot()) {
+      trees.push(funnel(path.join(__dirname, './public'), {
         files: ['fastboot-showdown.js']
       }));
     }
@@ -44,7 +52,7 @@ module.exports = {
     return mergeTrees(trees);
   },
 
-  importFastBootDependencies(app) {
+  legacyImportFastBootDependencies(app) {
     let pkg = require(path.join(app.project.root, 'package.json'));
     let whitelist = pkg.fastbootDependencies;
 
