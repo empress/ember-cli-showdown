@@ -4,8 +4,6 @@
 
 This addon provides a component that transforms [Markdown](http://en.wikipedia.org/wiki/Markdown) into valid HTML.
 
-![Screenshot](http://x.gcollazo.com/GS2zhpEpde.gif)
-
 ## Usage
 From within your Ember CLI application, run the following:
 
