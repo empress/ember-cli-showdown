@@ -4,7 +4,7 @@
 
 This addon provides a component that transforms [Markdown](http://en.wikipedia.org/wiki/Markdown) into valid HTML.
 
-Fastboot compatible (legacy and new API introduced in ember-cli-fastboot@rc1 supported).
+Fastboot compatible _legacy and new API introduced in ember-cli-fastboot@rc1 supported_.
 
 ## Usage
 From within your Ember CLI application, run the following:
