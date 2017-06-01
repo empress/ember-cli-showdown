@@ -44,11 +44,9 @@ module.exports = {
       files: ['showdown.js', 'showdown.js.map']
     }), (content) => "if (typeof FastBoot === 'undefined') { " + content + " }"));
 
-    if (legacyIsFastboot()) {
-      trees.push(funnel(path.join(__dirname, './public'), {
-        files: ['fastboot-showdown.js']
-      }));
-    }
+    trees.push(funnel(path.join(__dirname, './public'), {
+      files: ['fastboot-showdown.js']
+    }));
 
     return mergeTrees(trees);
   },
