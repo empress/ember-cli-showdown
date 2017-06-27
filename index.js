@@ -2,9 +2,10 @@
 'use strict';
 
 const path = require('path');
-const funnel = require('broccoli-funnel');
 const map = require('broccoli-stew').map;
+const funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
+const UnwatchedDir = require('broccoli-source').UnwatchedDir;
 
 // <= fastboot-beta
 function legacyIsFastboot() {
@@ -40,12 +41,12 @@ module.exports = {
       trees.push(vendorTree);
     }
 
-    trees.push(map(funnel(path.dirname(require.resolve('showdown/dist/showdown.js')), {
+    trees.push(map(funnel(new UnwatchedDir(path.dirname(require.resolve('showdown/dist/showdown.js'))), {
       files: ['showdown.js', 'showdown.js.map']
     }), (content) => "if (typeof FastBoot === 'undefined') { " + content + " }"));
 
     if (legacyIsFastboot()) {
-      trees.push(funnel(path.join(__dirname, './public'), {
+      trees.push(funnel(new UnwatchedDir(path.join(__dirname, './public')), {
         files: ['fastboot-showdown.js']
       }));
     }
