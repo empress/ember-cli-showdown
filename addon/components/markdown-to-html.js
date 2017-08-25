@@ -1,5 +1,5 @@
-/* global showdown */
 import Ember from 'ember';
+import showdown from 'showdown';
 import layout from '../templates/components/markdown-to-html';
 
 const { computed, get, merge, getOwner } = Ember;
