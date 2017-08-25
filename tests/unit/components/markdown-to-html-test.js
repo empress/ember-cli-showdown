@@ -1,5 +1,5 @@
-/* globals showdown */
 import Ember from 'ember';
+import showdown from 'showdown';
 import { moduleForComponent, test } from 'ember-qunit';
 
 moduleForComponent('markdown-to-html', 'Unit | Component | markdown to html', {

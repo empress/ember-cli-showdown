@@ -4,7 +4,7 @@
 
 This addon provides a component that transforms [Markdown](http://en.wikipedia.org/wiki/Markdown) into valid HTML.
 
-Fastboot compatible _legacy and new API introduced in ember-cli-fastboot@rc1 supported_.
+* Fastboot compatible
 
 ## Usage
 From within your Ember CLI application, run the following:
@@ -86,15 +86,15 @@ For example, in an initializer:
 
 ```js
 // app/initializers/register-showdown-extensions.js
+import showdown from 'showdown';
 
 export function initialize() {
   showdown.extension("myExtensionName", function() {
-    /* NOTE: returning an array of extensions is unsupported. */
-    return {
+    return [{
       type: 'html',
       regex: '<blockquote>',
       replace: '<blockquote class="blockquote">'
-    };
+    }];
   });
 }
 
@@ -105,6 +105,10 @@ export default {
 ```
 
 [showdown-extensions]: https://github.com/showdownjs/showdown/wiki/extensions
+
+## 3.x to 4.3 migration
+* Global `showdown` is no longer supported.  Must be imported via `import showdown from 'showdown'`
+* Remove any use of `FastBoot.require('require')` with `import showdown from 'showdown'`
 
 ## Dependencies
 * [Showdown](https://github.com/showdownjs/showdown)
