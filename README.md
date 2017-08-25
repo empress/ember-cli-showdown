@@ -89,11 +89,12 @@ For example, in an initializer:
 
 export function initialize() {
   showdown.extension("myExtensionName", function() {
-    return [{
+    /* NOTE: returning an array of extensions is unsupported. */
+    return {
       type: 'html',
       regex: '<blockquote>',
       replace: '<blockquote class="blockquote">'
-    }];
+    };
   });
 }
 
