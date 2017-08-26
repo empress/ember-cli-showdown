@@ -3,7 +3,6 @@
 
 const path = require('path');
 const funnel = require('broccoli-funnel');
-const mergeTrees = require('broccoli-merge-trees');
 const stringReplace = require('broccoli-string-replace');
 const UnwatchedDir = require('broccoli-source').UnwatchedDir;
 
@@ -18,7 +17,7 @@ module.exports = {
     });
   },
 
-  findShowdown(basedir) {
+  findModulePath(basedir) {
     try {
       let resolve = require('resolve');
 
@@ -37,27 +36,26 @@ module.exports = {
     }
   },
 
-  treeForVendor(vendorTree) {
-    let trees = [];
-    let folderPath = this.findShowdown(this.project.root);
+  treeForVendor() {
+    let modulePath = this.findModulePath(this.project.root);
 
-    if (vendorTree) {
-      trees.push(vendorTree);
+    if (modulePath) {
+      let showdownTree = funnel(new UnwatchedDir(modulePath), {
+        include: ['showdown.js', 'showdown.js.map']
+      });
+
+      /*
+       * The stringReplace forces showdown's loader to use define.amd vs. commonjs/node.
+       * This allows us to use the vendored copy of showdown when the app is eval'd within node (fastboot).
+       * https://github.com/showdownjs/showdown/blob/5d2016c0c1fa2bd722e45b952f1e446c3c870d0f/src/loader.js#L4
+       */
+      return stringReplace(showdownTree, {
+        files: ['showdown.js'],
+        pattern: {
+          match: /typeof module !== 'undefined'/g,
+          replacement: 'false'
+        }
+      });
     }
-
-    let showdownTree = funnel(new UnwatchedDir(folderPath), {
-      include: ['showdown.js', 'showdown.js.map']
-    });
-
-    /* force AMD */
-    trees.push(stringReplace(showdownTree, {
-      files: ['showdown.js'],
-      pattern: {
-        match: /typeof module !== 'undefined'/g,
-        replacement: 'false'
-      }
-    }));
-
-    return mergeTrees(trees);
   }
 };
