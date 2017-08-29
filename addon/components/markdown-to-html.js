@@ -1,11 +1,12 @@
-import Ember from 'ember';
+import { htmlSafe } from '@ember/string';
+import Component from '@ember/component';
+import { get, computed } from '@ember/object';
+import { merge, assign } from '@ember/polyfills';
+import { getOwner } from '@ember/application';
 import showdown from 'showdown';
 import layout from '../templates/components/markdown-to-html';
 
-const { computed, get, merge, getOwner } = Ember;
 const CONFIG_LOOKUP = 'config:environment';
-
-let assign = Ember.assign;
 
 if (!assign) {
   assign = function assignPolyfill(...objects) {
@@ -13,7 +14,7 @@ if (!assign) {
   };
 }
 
-const ShowdownComponent = Ember.Component.extend({
+const ShowdownComponent = Component.extend({
   layout,
   markdown: '',
   _globalOptions: null,
@@ -45,7 +46,7 @@ const ShowdownComponent = Ember.Component.extend({
       }
     }
 
-    return Ember.String.htmlSafe(converter.makeHtml(get(this, 'markdown')));
+    return htmlSafe(converter.makeHtml(get(this, 'markdown')));
   }).readOnly(),
 
   converter: computed('extensions', function() {
