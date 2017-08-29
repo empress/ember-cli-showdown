@@ -1,18 +1,11 @@
-import { htmlSafe } from '@ember/string';
-import Component from '@ember/component';
-import { get, computed } from '@ember/object';
-import { merge, assign } from '@ember/polyfills';
-import { getOwner } from '@ember/application';
 import showdown from 'showdown';
+import Component from '@ember/component';
+import { htmlSafe } from '@ember/string';
+import { get, computed } from '@ember/object';
+import { getOwner } from '@ember/application';
 import layout from '../templates/components/markdown-to-html';
 
 const CONFIG_LOOKUP = 'config:environment';
-
-if (!assign) {
-  assign = function assignPolyfill(...objects) {
-    return objects.reduce(merge);
-  };
-}
 
 const ShowdownComponent = Component.extend({
   layout,
