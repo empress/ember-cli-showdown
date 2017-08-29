@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import showdown from 'showdown';
 import { moduleForComponent, test } from 'ember-qunit';
 
@@ -18,7 +18,7 @@ test('it produces markdown', function(assert) {
   let component = this.subject();
   this.render();
 
-  Ember.run(function() {
+  run(function() {
     component.set('markdown', '##Hello, [world](#)');
   });
 
@@ -34,7 +34,7 @@ test('it inserts <br> tag', function(assert) {
   let component = this.subject();
   this.render();
 
-  Ember.run(function() {
+  run(function() {
     component.set('markdown', 'foo  \nbar');
   });
 
@@ -50,7 +50,7 @@ test('supports setting showdown options', function(assert) {
   let component = this.subject();
   this.render();
 
-  Ember.run(function() {
+  run(function() {
     component.set('markdown', '# title\nI ~~dislike~~ enjoy visiting http://www.google.com');
     component.set('simplifiedAutoLink', true);
     component.set('headerLevelStart', 3);
@@ -74,7 +74,7 @@ test('supports setting showdown options merged with global options', function(as
   let component = this.subject();
   this.render();
 
-  Ember.run(function() {
+  run(function() {
     component.set('markdown', '# title\nI ~~dislike~~ enjoy visiting http://www.google.com');
     component.set('headerLevelStart', 3);
     component.set('strikethrough', true);
@@ -101,7 +101,7 @@ test('it supports loading showdown extensions', function(assert) {
   let component = this.subject({ extensions: ['demo'] });
   this.render();
 
-  Ember.run(function() {
+  run(function() {
     component.set("markdown", "this is an ember showdown!");
   });
 
@@ -118,7 +118,7 @@ test('does not reset default showdown options with undefined', function(assert) 
   let component = this.subject();
   this.render();
 
-  Ember.run(function() {
+  run(function() {
     component.set('markdown', '~~dislike~~');
   });
 
@@ -156,7 +156,7 @@ test('it supports loading showdown extensions', function(assert) {
   let component = this.subject({ extensions: 'demo excited' });
   this.render();
 
-  Ember.run(function() {
+  run(function() {
     component.set("markdown", "this is a showdown");
   });
 
@@ -171,7 +171,7 @@ test('it does not munge code fences', function(assert) {
   let component = this.subject();
   this.render();
 
-  Ember.run(function() {
+  run(function() {
     component.set("ghCodeBlocks", true);
     component.set("markdown", "```html\n<strong>hello</strong>\n<em>world</em>\n```");
   });
