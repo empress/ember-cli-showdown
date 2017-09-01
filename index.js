@@ -48,6 +48,9 @@ module.exports = {
        * The stringReplace forces showdown's loader to use define.amd vs. commonjs/node.
        * This allows us to use the vendored copy of showdown when the app is eval'd within node (fastboot).
        * https://github.com/showdownjs/showdown/blob/5d2016c0c1fa2bd722e45b952f1e446c3c870d0f/src/loader.js#L4
+       *
+       * fixed here: https://github.com/showdownjs/showdown/pull/426 but cannot be relied on right now.
+       * we can do a semver showdown version check and take this path if showdown ver < patched ver
        */
       return stringReplace(showdownTree, {
         files: ['showdown.js'],
