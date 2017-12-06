@@ -54,10 +54,14 @@ module.exports = {
        */
       return stringReplace(showdownTree, {
         files: ['showdown.js'],
-        pattern: {
+        patterns: [{
           match: /typeof module !== 'undefined'/g,
           replacement: 'false'
-        }
+        },
+        {
+          match: /\/\/# sourceMappingURL=showdown.js.map/g,
+          replacement: ''
+        }]
       });
     }
   }
