@@ -2,15 +2,14 @@ import showdown from 'showdown';
 import Component from '@ember/component';
 import { htmlSafe } from '@ember/string';
 import { get, computed } from '@ember/object';
-import { getOwner } from '@ember/application';
 import layout from '../templates/components/markdown-to-html';
-
-const CONFIG_LOOKUP = 'config:environment';
 
 const ShowdownComponent = Component.extend({
   layout,
   markdown: '',
-  _globalOptions: null,
+
+  /* @private */
+  globalConfig: null,
 
   extensions: computed(function() {
     return [];
@@ -19,15 +18,6 @@ const ShowdownComponent = Component.extend({
   defaultOptionKeys: computed(function() {
     return Object.keys(showdown.getDefaultOptions());
   }).readOnly(),
-
-  init() {
-    this._super(...arguments);
-    const owner = getOwner(this);
-
-    if (owner && owner.hasRegistration(CONFIG_LOOKUP)) {
-      this._globalOptions = (owner.resolveRegistration(CONFIG_LOOKUP) || {}).showdown;
-    }
-  },
 
   html: computed('markdown', 'converter', function() {
     let showdownOptions = this.getShowdownProperties(get(this, 'defaultOptionKeys'));
@@ -56,8 +46,8 @@ const ShowdownComponent = Component.extend({
     return keyNames.reduce((accumulator, keyName) => {
       let value = get(this, keyName);
 
-      if (value === undefined && this._globalOptions) {
-        value = get(this._globalOptions, keyName);
+      if (value === undefined && this.globalConfig) {
+        value = get(this.globalConfig, keyName);
       }
 
       accumulator[keyName] = value;
