@@ -22,12 +22,14 @@ module.exports = {
       let resolve = require('resolve');
 
       return path.dirname(resolve.sync('showdown', { basedir: basedir }));
-    } catch(_) {
+    } catch (_) {
       try {
         return path.dirname(require.resolve('showdown'));
-      } catch(e) {
+      } catch (e) {
         if (e.code === 'MODULE_NOT_FOUND') {
-          this.ui.writeLine(`ember-cli-showdown: showdown not installed, be sure you have showdown installed via npm/yarn.`)
+          this.ui.writeLine(
+            `ember-cli-showdown: showdown not installed, be sure you have showdown installed via npm/yarn.`
+          );
           return;
         }
 
@@ -44,24 +46,46 @@ module.exports = {
         include: ['showdown.js', 'showdown.js.map']
       });
 
+      showdownTree = stringReplace(showdownTree, {
+        files: ['showdown.js'],
+        patterns: [
+          {
+            match: /\/\/# sourceMappingURL=showdown.js.map/g,
+            replacement: ''
+          }
+        ]
+      });
+
+      let pkg = require(path.join(modulePath, '..', 'package.json'));
+
+      if (pkg) {
+        let version = pkg.version.split('.');
+
+        /* if version is >= 1.7.4, we do not need to remove 'typeof module !== 'undefined'' */
+        if (version.length >= 3) {
+          let major = parseInt(version[0], 10);
+          let minor = parseInt(version[1], 10);
+          let patch = parseInt(version[2], 10);
+
+          if (major >= 1 && minor >= 7 && patch >= 4) {
+            return showdownTree;
+          }
+        }
+      }
+
       /*
        * The stringReplace forces showdown's loader to use define.amd vs. commonjs/node.
        * This allows us to use the vendored copy of showdown when the app is eval'd within node (fastboot).
        * https://github.com/showdownjs/showdown/blob/5d2016c0c1fa2bd722e45b952f1e446c3c870d0f/src/loader.js#L4
-       *
-       * fixed here: https://github.com/showdownjs/showdown/pull/426 but cannot be relied on right now.
-       * we can do a semver showdown version check and take this path if showdown ver < patched ver
        */
       return stringReplace(showdownTree, {
         files: ['showdown.js'],
-        patterns: [{
-          match: /typeof module !== 'undefined'/g,
-          replacement: 'false'
-        },
-        {
-          match: /\/\/# sourceMappingURL=showdown.js.map/g,
-          replacement: ''
-        }]
+        patterns: [
+          {
+            match: /typeof module !== 'undefined'/g,
+            replacement: 'false'
+          }
+        ]
       });
     }
   }

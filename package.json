@@ -29,7 +29,7 @@
     "ember-cli-htmlbars": "^2.0.3",
     "ember-cli-import-polyfill": "^0.2.0",
     "ember-getowner-polyfill": "^2.0.1",
-    "showdown": "^1.7.3"
+    "showdown": "^1.7.4"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",

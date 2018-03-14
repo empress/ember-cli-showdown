@@ -1,5 +1,5 @@
-import { run } from '@ember/runloop';
 import showdown from 'showdown';
+import { run } from '@ember/runloop';
 import { moduleForComponent, test } from 'ember-qunit';
 
 moduleForComponent('markdown-to-html', 'Unit | Component | markdown to html', {
@@ -9,7 +9,12 @@ moduleForComponent('markdown-to-html', 'Unit | Component | markdown to html', {
 test('it renders', function(assert) {
   assert.expect(1);
   this.render();
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(
+    this.$()
+      .text()
+      .trim(),
+    ''
+  );
 });
 
 test('it produces markdown', function(assert) {
@@ -25,7 +30,14 @@ test('it produces markdown', function(assert) {
   let expectedHtml = '<h2 id="helloworld">Hello, <a href="#">world</a></h2>';
 
   assert.equal(component.get('html').toString(), expectedHtml);
-  assert.equal(component.$().html().toString().trim(), expectedHtml);
+  assert.equal(
+    component
+      .$()
+      .html()
+      .toString()
+      .trim(),
+    expectedHtml
+  );
 });
 
 test('it inserts <br> tag', function(assert) {
@@ -51,13 +63,17 @@ test('supports setting showdown options', function(assert) {
   this.render();
 
   run(function() {
-    component.set('markdown', '# title\nI ~~dislike~~ enjoy visiting http://www.google.com');
+    component.set(
+      'markdown',
+      '# title\nI ~~dislike~~ enjoy visiting http://www.google.com'
+    );
     component.set('simplifiedAutoLink', true);
     component.set('headerLevelStart', 3);
     component.set('strikethrough', true);
   });
 
-  let expectedHtml = '<h3 id="title">title</h3>\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
+  let expectedHtml =
+    '<h3 id="title">title</h3>\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
 
   assert.equal(component.get('html').toString(), expectedHtml);
 });
@@ -75,12 +91,16 @@ test('supports setting showdown options merged with global options', function(as
   this.render();
 
   run(function() {
-    component.set('markdown', '# title\nI ~~dislike~~ enjoy visiting http://www.google.com');
+    component.set(
+      'markdown',
+      '# title\nI ~~dislike~~ enjoy visiting http://www.google.com'
+    );
     component.set('headerLevelStart', 3);
     component.set('strikethrough', true);
   });
 
-  let expectedHtml = '<h3 id="title">title</h3>\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
+  let expectedHtml =
+    '<h3 id="title">title</h3>\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
 
   assert.equal(component.get('html').toString(), expectedHtml);
 });
@@ -88,21 +108,23 @@ test('supports setting showdown options merged with global options', function(as
 test('it supports loading showdown extensions', function(assert) {
   assert.expect(1);
 
-  showdown.extension("demo", function() {
-    return [{
-      type: "lang",
-      regex: "this is an ember showdown!",
-      replace() {
-        return "no it isn't!";
+  showdown.extension('demo', function() {
+    return [
+      {
+        type: 'lang',
+        regex: 'this is an ember showdown!',
+        replace() {
+          return "no it isn't!";
+        }
       }
-    }];
+    ];
   });
 
   let component = this.subject({ extensions: ['demo'] });
   this.render();
 
   run(function() {
-    component.set("markdown", "this is an ember showdown!");
+    component.set('markdown', 'this is an ember showdown!');
   });
 
   let expectedHtml = "<p>no it isn't!</p>";
@@ -129,41 +151,43 @@ test('does not reset default showdown options with undefined', function(assert) 
   showdown.setOption('strikethrough', originalStrikeThroughValue);
 });
 
-
 test('it supports loading showdown extensions', function(assert) {
   assert.expect(1);
 
-  showdown.extension("demo", function() {
-    return [{
-      type: "lang",
-      regex: /\sa\s/,
-      replace() {
-        return " an ember ";
+  showdown.extension('demo', function() {
+    return [
+      {
+        type: 'lang',
+        regex: /\sa\s/,
+        replace() {
+          return ' an ember ';
+        }
       }
-    }];
+    ];
   });
 
-  showdown.extension("excited", function() {
-    return [{
-      type: "lang",
-      regex: /showdown/,
-      replace() {
-        return "showdown!";
+  showdown.extension('excited', function() {
+    return [
+      {
+        type: 'lang',
+        regex: /showdown/,
+        replace() {
+          return 'showdown!';
+        }
       }
-    }];
+    ];
   });
 
   let component = this.subject({ extensions: 'demo excited' });
   this.render();
 
   run(function() {
-    component.set("markdown", "this is a showdown");
+    component.set('markdown', 'this is a showdown');
   });
 
-  let expectedHtml = "<p>this is an ember showdown!</p>";
+  let expectedHtml = '<p>this is an ember showdown!</p>';
   assert.equal(component.get('html').toString(), expectedHtml);
 });
-
 
 test('it does not munge code fences', function(assert) {
   assert.expect(1);
@@ -172,10 +196,14 @@ test('it does not munge code fences', function(assert) {
   this.render();
 
   run(function() {
-    component.set("ghCodeBlocks", true);
-    component.set("markdown", "```html\n<strong>hello</strong>\n<em>world</em>\n```");
+    component.set('ghCodeBlocks', true);
+    component.set(
+      'markdown',
+      '```html\n<strong>hello</strong>\n<em>world</em>\n```'
+    );
   });
 
-  let expectedHtml = "<pre><code class=\"html language-html\">&lt;strong&gt;hello&lt;/strong&gt;\n&lt;em&gt;world&lt;/em&gt;\n</code></pre>";
+  let expectedHtml =
+    '<pre><code class="html language-html">&lt;strong&gt;hello&lt;/strong&gt;\n&lt;em&gt;world&lt;/em&gt;\n</code></pre>';
   assert.equal(component.get('html').toString(), expectedHtml);
 });

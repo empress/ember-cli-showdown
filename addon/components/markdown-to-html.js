@@ -25,16 +25,23 @@ const ShowdownComponent = Component.extend({
     const owner = getOwner(this);
 
     if (owner && owner.hasRegistration(CONFIG_LOOKUP)) {
-      this._globalOptions = (owner.resolveRegistration(CONFIG_LOOKUP) || {}).showdown;
+      this._globalOptions = (
+        owner.resolveRegistration(CONFIG_LOOKUP) || {}
+      ).showdown;
     }
   },
 
   html: computed('markdown', 'converter', function() {
-    let showdownOptions = this.getShowdownProperties(get(this, 'defaultOptionKeys'));
+    let showdownOptions = this.getShowdownProperties(
+      get(this, 'defaultOptionKeys')
+    );
     let converter = get(this, 'converter');
 
     for (let option in showdownOptions) {
-      if (showdownOptions.hasOwnProperty(option) && (typeof showdownOptions[option]) !== 'undefined') {
+      if (
+        showdownOptions.hasOwnProperty(option) &&
+        typeof showdownOptions[option] !== 'undefined'
+      ) {
         converter.setOption(option, showdownOptions[option]);
       }
     }
