@@ -1,5 +1,5 @@
-import { run } from '@ember/runloop';
 import showdown from 'showdown';
+import { run } from '@ember/runloop';
 import { moduleForComponent, test } from 'ember-qunit';
 
 moduleForComponent('markdown-to-html', 'Unit | Component | markdown to html', {
@@ -64,12 +64,6 @@ test('supports setting showdown options', function(assert) {
 
 test('supports setting showdown options merged with global options', function(assert) {
   assert.expect(1);
-
-  this.register('config:environment', {
-    showdown: {
-      simplifiedAutoLink: true
-    }
-  });
 
   let component = this.subject();
   this.render();
