@@ -2,6 +2,7 @@
 'use strict';
 
 const path = require('path');
+const semver = require('semver');
 const funnel = require('broccoli-funnel');
 const stringReplace = require('broccoli-string-replace');
 const UnwatchedDir = require('broccoli-source').UnwatchedDir;
@@ -58,19 +59,8 @@ module.exports = {
 
       let pkg = require(path.join(modulePath, '..', 'package.json'));
 
-      if (pkg) {
-        let version = pkg.version.split('.');
-
-        /* if version is >= 1.7.4, we do not need to remove 'typeof module !== 'undefined'' */
-        if (version.length >= 3) {
-          let major = parseInt(version[0], 10);
-          let minor = parseInt(version[1], 10);
-          let patch = parseInt(version[2], 10);
-
-          if (major >= 1 && minor >= 7 && patch >= 4) {
-            return showdownTree;
-          }
-        }
+      if (pkg.version && semver.gt(pkg.version, '1.7.4')) {
+        return showdownTree;
       }
 
       /*
