@@ -16,6 +16,8 @@ module.exports = {
     this.import('vendor/showdown.js', {
       using: [{ transformation: 'amd', as: 'showdown' }]
     });
+
+    this.import('vendor/showdown.js.map', { destDir: 'assets' })
   },
 
   findModulePath(basedir) {
@@ -45,16 +47,6 @@ module.exports = {
     if (modulePath) {
       let showdownTree = funnel(new UnwatchedDir(modulePath), {
         include: ['showdown.js', 'showdown.js.map']
-      });
-
-      showdownTree = stringReplace(showdownTree, {
-        files: ['showdown.js'],
-        patterns: [
-          {
-            match: /\/\/# sourceMappingURL=showdown.js.map/g,
-            replacement: ''
-          }
-        ]
       });
 
       let pkg = require(path.join(modulePath, '..', 'package.json'));
