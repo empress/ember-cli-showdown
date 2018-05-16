@@ -7,6 +7,10 @@ This addon provides a component that transforms [Markdown](http://en.wikipedia.o
 
 * Fastboot compatible
 
+## Requirements
+
+* ember-cli >= 2.16.0 (if on older version of ember-cli, target ember-cli-showdown@3)
+
 ## Usage
 From within your Ember CLI application, run the following:
 
