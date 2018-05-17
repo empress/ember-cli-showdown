@@ -18,7 +18,7 @@ module.exports = {
     let checker = new VersionChecker(this);
     let dep = checker.for('ember-cli');
 
-    assert(dep.lt('2.16.0'), '[ember-cli-showdown] ember-cli >= 2.16.0 is required for ember-cli-showdown@^4.0.0.  Either upgrade ember-cli or target ember-cli-showdown@3.');
+    assert(dep.gte('2.16.0'), '[ember-cli-showdown] ember-cli >= 2.16.0 is required for ember-cli-showdown@^4.0.0.  Either upgrade ember-cli or target ember-cli-showdown@3.');
   },
 
   included() {
