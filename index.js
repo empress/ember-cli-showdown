@@ -18,7 +18,10 @@ module.exports = {
     let checker = new VersionChecker(this);
     let dep = checker.for('ember-cli');
 
-    assert(dep.gte('2.16.0'), '[ember-cli-showdown] ember-cli >= 2.16.0 is required for ember-cli-showdown@^4.0.0.  Either upgrade ember-cli or target ember-cli-showdown@3.');
+    assert(
+      dep.gte('2.16.0'),
+      '[ember-cli-showdown] ember-cli >= 2.16.0 is required for ember-cli-showdown@^4.0.0.  Either upgrade ember-cli or target ember-cli-showdown@3.'
+    );
   },
 
   included() {
@@ -27,8 +30,6 @@ module.exports = {
     this.import('vendor/showdown.js', {
       using: [{ transformation: 'amd', as: 'showdown' }]
     });
-
-    this.import('vendor/showdown.js.map', { destDir: 'assets' })
   },
 
   findModulePath(basedir) {
@@ -52,18 +53,31 @@ module.exports = {
     }
   },
 
+  removeSourcemapAnnotation(node) {
+    return stringReplace(node, {
+      files: ['showdown.js'],
+      annotation: 'Remove sourcemap annotation (showdown)',
+      patterns: [
+        {
+          match: /\/\/# sourceMappingURL=showdown.js.map/g,
+          replacement: ''
+        }
+      ]
+    });
+  },
+
   treeForVendor() {
     let modulePath = this.findModulePath(this.project.root);
 
     if (modulePath) {
       let showdownTree = funnel(new UnwatchedDir(modulePath), {
-        include: ['showdown.js', 'showdown.js.map']
+        include: ['showdown.js']
       });
 
       let pkg = require(path.join(modulePath, '..', 'package.json'));
 
       if (pkg.version && semver.gt(pkg.version, '1.7.4')) {
-        return showdownTree;
+        return this.removeSourcemapAnnotation(showdownTree);
       }
 
       /*
@@ -71,15 +85,17 @@ module.exports = {
        * This allows us to use the vendored copy of showdown when the app is eval'd within node (fastboot).
        * https://github.com/showdownjs/showdown/blob/5d2016c0c1fa2bd722e45b952f1e446c3c870d0f/src/loader.js#L4
        */
-      return stringReplace(showdownTree, {
-        files: ['showdown.js'],
-        patterns: [
-          {
-            match: /typeof module !== 'undefined'/g,
-            replacement: 'false'
-          }
-        ]
-      });
+      return this.removeSourcemapAnnotation(
+        stringReplace(showdownTree, {
+          files: ['showdown.js'],
+          patterns: [
+            {
+              match: /typeof module !== 'undefined'/g,
+              replacement: 'false'
+            }
+          ]
+        })
+      );
     }
   }
 };
