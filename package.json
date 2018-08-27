@@ -32,7 +32,7 @@
     "ember-getowner-polyfill": "^2.0.1",
     "resolve": "^1.8.1",
     "semver": "^5.5.0",
-    "showdown": "^1.7.4"
+    "showdown": "^1.8.6"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -41,7 +41,7 @@
     "ember-cli-eslint": "^3.0.0",
     "ember-cli-htmlbars-inline-precompile": "^0.4.0",
     "ember-cli-inject-live-reload": "^1.4.1",
-    "ember-cli-qunit": "^4.0.0",
+    "ember-cli-qunit": "^4.3.2",
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
@@ -54,7 +54,7 @@
     "loader.js": "^4.6.0"
   },
   "engines": {
-    "node": ">= 4"
+    "node": "6.* || >= 8.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
