@@ -10,6 +10,7 @@ const CONFIG_LOOKUP = 'config:environment';
 const ShowdownComponent = Component.extend({
   layout,
   markdown: '',
+  tagName: '',
   _globalOptions: null,
 
   extensions: computed(function() {
