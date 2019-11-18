@@ -12,10 +12,6 @@ const ShowdownComponent = Component.extend({
   markdown: '',
   _globalOptions: null,
 
-  extensions: computed(function() {
-    return [];
-  }),
-
   defaultOptionKeys: computed(function() {
     return Object.keys(showdown.getDefaultOptions());
   }).readOnly(),
