@@ -10,11 +10,9 @@ const CONFIG_LOOKUP = 'config:environment';
 const ShowdownComponent = Component.extend({
   layout,
   markdown: '',
-  _globalOptions: null,
+  extensions: null,
 
-  extensions: computed(function() {
-    return [];
-  }),
+  _globalOptions: null,
 
   defaultOptionKeys: computed(function() {
     return Object.keys(showdown.getDefaultOptions());
@@ -23,6 +21,10 @@ const ShowdownComponent = Component.extend({
   init() {
     this._super(...arguments);
     const owner = getOwner(this);
+
+    if (!this.extensions) {
+      this.extensions = [];
+    }
 
     if (owner && owner.hasRegistration(CONFIG_LOOKUP)) {
       this._globalOptions = (
