@@ -67,6 +67,15 @@ module.exports = function(environment) {
 }
 ```
 
+#### Other options
+
+An example where you can render the markdown into a tagless component:
+
+```handlebars
+{{markdown-to-html block.value tagName=''}}
+```
+
+
 ### Showdown Extensions
 
 You can load [Showdown Extensions](https://github.com/showdownjs/showdown/wiki/extensions) by specifying the
