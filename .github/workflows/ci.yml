@@ -34,7 +34,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: yarn
+      - run: yarn --ignore-engines
       - run: yarn test:ember
 
   floating-dependencies:
@@ -46,7 +46,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: yarn --no-lockfile
+      - run: yarn --no-lockfile --ignore-engines
       - run: yarn test:ember
 
   try-scenarios:
@@ -69,6 +69,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: yarn
+      - run: yarn --ignore-engines
       - name: test
         run: node_modules/.bin/ember try:one ${{ matrix.ember-try-scenario }} --skip-cleanup
