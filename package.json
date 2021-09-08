@@ -19,7 +19,9 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember try:each"
+    "test": "ember try:each",
+    "test:ember": "ember test",
+    "lint:js": "eslint . --cache"
   },
   "dependencies": {
     "broccoli-funnel": "^2.0.0",
