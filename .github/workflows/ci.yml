@@ -9,7 +9,7 @@ on:
   pull_request:
 
 env:
-  NODE_VERSION: 6
+  NODE_VERSION: 12
   FORCE_COLOR: 1
 
 jobs:
