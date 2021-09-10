@@ -9,9 +9,10 @@ moduleForComponent('markdown-to-html', 'Unit | Component | markdown to html', {
 test('it renders', function(assert) {
   assert.expect(1);
   this.render();
+
   assert.equal(
-    this.$()
-      .text()
+    this._element
+      .innerText
       .trim(),
     ''
   );
@@ -32,8 +33,8 @@ test('it produces markdown', function(assert) {
   assert.equal(component.get('html').toString(), expectedHtml);
   assert.equal(
     component
-      .$()
-      .html()
+      .element
+      .innerHTML
       .toString()
       .trim(),
     expectedHtml
