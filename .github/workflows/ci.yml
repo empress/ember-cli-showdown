@@ -24,6 +24,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - run: npm i -g npm@6
       - run: npm ci
+      - run: npm run lint:hbs
       - run: npm run lint:js
 
   test:
@@ -70,6 +71,7 @@ jobs:
           - ember-release
           - ember-beta
           - ember-canary
+          - ember-default-with-jquery
 
     steps:
       - uses: actions/checkout@v2
