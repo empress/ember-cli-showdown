@@ -1,6 +1,5 @@
-# Ember CLI Showdown
+# ember-cli-showdown
 
-[![Build Status](https://travis-ci.org/gcollazo/ember-cli-showdown.svg?branch=master)](https://travis-ci.org/gcollazo/ember-cli-showdown)
 [![Ember Observer Score](http://emberobserver.com/badges/ember-cli-showdown.svg)](http://emberobserver.com/addons/ember-cli-showdown)
 
 This addon provides a component that transforms [Markdown](http://en.wikipedia.org/wiki/Markdown) into valid HTML.
@@ -120,21 +119,23 @@ export default {
 
 ## Development
 
-* `git clone https://github.com/gcollazo/ember-cli-showdown.git`
+* `git clone git@github.com:ember-cli/ember-addon-output.git` this repository
 * `cd ember-cli-showdown`
 * `npm install`
-* `bower install`
 
-## Previewing
+## Running
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+* `ember serve`
+* Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ## Running Tests
 
+* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 
 ## Building
 
 * `ember build`
+
+For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
