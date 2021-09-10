@@ -114,7 +114,30 @@ module.exports = function() {
               '@ember/jquery': '^0.5.1'
             }
           }
-        }
+        },
+        {
+          name: 'no-deprecations',
+          env: {
+            RAISE_ON_DEPRECATION: true
+          },
+          npm: {
+            devDependencies: {
+              'ember-deprecation-error': '*',
+            },
+          },
+        },
+        {
+          name: 'ember-release-no-deprecations',
+          env: {
+            RAISE_ON_DEPRECATION: true
+          },
+          npm: {
+            devDependencies: {
+              'ember-source': urls[0],
+              'ember-deprecation-error': '*',
+            },
+          },
+        },
       ]
     };
   });

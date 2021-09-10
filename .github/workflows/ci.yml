@@ -72,6 +72,8 @@ jobs:
           - ember-beta
           - ember-canary
           - ember-default-with-jquery
+          - no-deprecations
+          - ember-release-no-deprecations
 
     steps:
       - uses: actions/checkout@v2
