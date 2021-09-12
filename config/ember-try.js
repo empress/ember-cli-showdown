@@ -9,6 +9,10 @@ module.exports = function() {
     getChannelURL('canary')
   ]).then((urls) => {
     return {
+      buildManagerOptions() {
+        // stop using --no-shrinkwrap
+        return [];
+      },
       scenarios: [
         {
           name: 'ember-lts-2.4',
