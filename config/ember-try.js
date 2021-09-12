@@ -146,7 +146,7 @@ module.exports = function() {
           npm: {
             devDependencies: {
               'ember-source': urls[0],
-              'ember-deprecation-error': '*',
+              // 'ember-deprecation-error': '*',
             },
           },
         },
