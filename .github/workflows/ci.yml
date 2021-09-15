@@ -22,8 +22,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm i -g npm@6
+      - run: npm i -g npm@7
       - run: npm ci
+      - run: npm run lint:hbs
       - run: npm run lint:js
 
   test:
@@ -35,7 +36,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm i -g npm@6
+      - run: npm i -g npm@7
       - run: npm ci
       - run: npm run test:ember
 
@@ -48,7 +49,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm i -g npm@6
+      - run: npm i -g npm@7
       - run: npm install --no-package-lock
       - run: npm run test:ember
 
@@ -66,15 +67,22 @@ jobs:
           - ember-lts-2.8
           - ember-lts-2.12
           - ember-lts-2.16
+          - ember-lts-2.18
+          - ember-lts-3.4
+          - ember-lts-3.8
           - ember-release
+          - ember-beta
           - ember-canary
+          - ember-default-with-jquery
+          - no-deprecations
+          - ember-release-no-deprecations
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm i -g npm@6
+      - run: npm i -g npm@7
       - run: npm ci
       - name: test
         run: node_modules/.bin/ember try:one ${{ matrix.ember-try-scenario }} --skip-cleanup

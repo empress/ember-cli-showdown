@@ -9,7 +9,7 @@ const VersionChecker = require('ember-cli-version-checker');
 const UnwatchedDir = require('broccoli-source').UnwatchedDir;
 
 module.exports = {
-  name: 'ember-cli-showdown',
+  name: require('./package').name,
 
   init() {
     this._super.init && this._super.init.apply(this, arguments);

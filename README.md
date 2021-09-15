@@ -1,4 +1,5 @@
-# ember-cli-showdown
+ember-cli-showdown
+==============================================================================
 
 [![Ember Observer Score](http://emberobserver.com/badges/ember-cli-showdown.svg)](http://emberobserver.com/addons/ember-cli-showdown)
 
@@ -117,25 +118,10 @@ export default {
 ## Dependencies
 * [Showdown](https://github.com/showdownjs/showdown)
 
-## Development
+## Contributing
 
-* `git clone git@github.com:ember-cli/ember-addon-output.git` this repository
-* `cd ember-cli-showdown`
-* `npm install`
+See the [Contributing](CONTRIBUTING.md) guide for details.
 
-## Running
+## License
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-## Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+This project is licensed under the [MIT License](LICENSE.md).
