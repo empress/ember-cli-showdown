@@ -33,7 +33,7 @@ const ShowdownComponent = Component.extend({
     }
   },
 
-  html: computed('markdown', 'converter', function() {
+  html: computed('converter', 'defaultOptionKeys', 'markdown', function() {
     let showdownOptions = this.getShowdownProperties(
       get(this, 'defaultOptionKeys')
     );
