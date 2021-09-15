@@ -1,3 +1,4 @@
+/* eslint-disable ember/no-get, no-prototype-builtins */
 import showdown from 'showdown';
 import Component from '@ember/component';
 import { htmlSafe } from '@ember/string';
