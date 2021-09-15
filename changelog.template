@@ -1,0 +1,10 @@
+{{#each releases}}
+  {{title}} / {{isoDate}}
+  ==================
+  {{#if merges}}
+    {{#each merges}}
+      * {{#if commit.breaking}}**Breaking change:** {{/if}}{{message}} #{{id}} from @{{githubIssue.user.login}}
+    {{/each}}
+  {{/if}}
+
+{{/each}}
