@@ -65,6 +65,8 @@
     "eslint": "^5.0.0",
     "eslint-plugin-ember": "^7.7.2",
     "eslint-plugin-node": "^11.0.0",
+    "lint-to-the-future": "^0.6.1",
+    "lint-to-the-future-ember-template": "^0.3.5",
     "loader.js": "^4.7.0",
     "qunit-dom": "^1.0.0"
   },
