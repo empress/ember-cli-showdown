@@ -1,3 +1,7 @@
+v6.0.0 / 2021-09-15
+==================
+* breaking: Drop support for Ember &lt; 3.12 and update to 3.28 using ember-cli-update #106 from @mansona
+
 v5.0.0 / 2021-09-15
 ==================
 * Add auto-changelog system and backfill existing changelog #105 from @mansona
