@@ -9,7 +9,9 @@ This addon provides a component that transforms [Markdown](http://en.wikipedia.o
 
 ## Requirements
 
-* ember-cli >= 2.16.0 (if on older version of ember-cli, target ember-cli-showdown@3)
+* Ember.js v3.12 or above
+* Ember CLI v2.13 or above
+* Node.js v12 or above
 
 ## Usage
 From within your Ember CLI application, run the following:
