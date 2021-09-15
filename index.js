@@ -1,27 +1,13 @@
 'use strict';
 
 const path = require('path');
-const assert = require('assert');
 const semver = require('semver');
 const funnel = require('broccoli-funnel');
 const stringReplace = require('broccoli-string-replace');
-const VersionChecker = require('ember-cli-version-checker');
 const UnwatchedDir = require('broccoli-source').UnwatchedDir;
 
 module.exports = {
   name: require('./package').name,
-
-  init() {
-    this._super.init && this._super.init.apply(this, arguments);
-
-    let checker = new VersionChecker(this);
-    let dep = checker.for('ember-cli');
-
-    assert(
-      dep.gte('2.16.0'),
-      '[ember-cli-showdown] ember-cli >= 2.16.0 is required for ember-cli-showdown@^4.0.0.  Either upgrade ember-cli or target ember-cli-showdown@3.'
-    );
-  },
 
   included() {
     this._super.included.apply(this, arguments);
