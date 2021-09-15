@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "ember build",
+    "changelog": "auto-changelog --template changelog.template --unreleased-only --prepend --load-github-issue-data --github-cache-dir .changelog",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
     "start": "ember serve",
@@ -40,6 +41,7 @@
   },
   "devDependencies": {
     "@ember/optional-features": "^0.7.0",
+    "auto-changelog": "github:mansona/auto-changelog#epic",
     "broccoli-asset-rev": "^3.0.0",
     "ember-cli": "~3.12.1",
     "ember-cli-dependency-checker": "^3.1.0",
