@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
@@ -14,7 +15,7 @@ module('Integration | Component | markdown-to-html', function(hooks) {
     assert.equal(this.element.querySelector('div').innerHTML.trim(), '<p><em>hello world</em></p>');
   });
 
-  test('it renders', async function(assert) {
+  test('it renders empty', async function(assert) {
     await render(hbs`{{markdown-to-html}}`);
 
     assert.equal(

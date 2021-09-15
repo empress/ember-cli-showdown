@@ -1,3 +1,4 @@
+/* eslint-disable ember/no-classic-components, ember/no-classic-classes, ember/require-tagless-components, prettier/prettier, ember/no-assignment-of-untracked-properties-used-in-tracking-contexts, ember/no-get, no-prototype-builtins */
 import showdown from 'showdown';
 import Component from '@ember/component';
 import { htmlSafe } from '@ember/string';
@@ -33,7 +34,7 @@ const ShowdownComponent = Component.extend({
     }
   },
 
-  html: computed('markdown', 'converter', function() {
+  html: computed('converter', 'defaultOptionKeys', 'markdown', function() {
     let showdownOptions = this.getShowdownProperties(
       get(this, 'defaultOptionKeys')
     );
