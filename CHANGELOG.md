@@ -1,3 +1,11 @@
+v5.0.0 / 2021-09-15
+==================
+* Add auto-changelog system and backfill existing changelog #105 from @mansona
+* update from 2.18 to 3.12 using ember-cli-update #104 from @mansona
+* breaking: drop node &lt; 12 support and reset using ember-cli-update --to 2.18 --reset #103 from @mansona
+* GitHub actions #101 from @mansona
+* fix deprecation warning - adding `this.` #96 from @stukalin
+
 v4.5.0 / 2020-04-04
 ==================
 * Update showdown #70 from @NullVoxPopuli
