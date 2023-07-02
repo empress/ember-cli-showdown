@@ -1,5 +1,4 @@
-ember-cli-showdown
-==============================================================================
+# ember-cli-showdown
 
 [![Ember Observer Score](http://emberobserver.com/badges/ember-cli-showdown.svg)](http://emberobserver.com/addons/ember-cli-showdown)
 
@@ -7,16 +6,17 @@ This addon provides a component that transforms [Markdown](http://en.wikipedia.o
 
 * Fastboot compatible
 
-## Requirements
+## Compatibility
 
 * Ember.js v3.12 or above
-* Ember CLI v2.13 or above
-* Node.js v12 or above
+* Ember CLI v3.12 or above
+* Node.js v16 or above
 
-## Usage
-From within your Ember CLI application, run the following:
+## Installation
 
 - `ember install ember-cli-showdown`
+
+## Usage
 
 Passing a markdown string inline:
 
@@ -114,6 +114,7 @@ export default {
 [showdown-extensions]: https://github.com/showdownjs/showdown/wiki/extensions
 
 ## 3.x to 4.3 migration
+
 * Global `showdown` is no longer supported.  Must be imported via `import showdown from 'showdown'`
 * Remove any use of `FastBoot.require('require')` with `import showdown from 'showdown'`
 
