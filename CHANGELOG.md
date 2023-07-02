@@ -1,3 +1,10 @@
+v7.0.0 / 2023-07-02
+==================
+
+* update to v4.12 with ember-cli-update #128 from @mansona
+* use ember-auto-import to import showdown #126 from @mansona
+* breaking: drop support for node &lt; 16 #127 from @mansona
+
 v6.0.1 / 2021-12-07
 ==================
 * feat: Import htmlSafe from @ember/template, not @ember/string. #107 from @muziejus
