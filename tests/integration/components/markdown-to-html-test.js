@@ -16,7 +16,7 @@ module('Integration | Component | markdown-to-html', function(hooks) {
   });
 
   test('it renders empty', async function(assert) {
-    await render(hbs`{{markdown-to-html}}`);
+    await render(hbs`<MarkdownToHtml />`);
 
     assert.strictEqual(
       this.element
@@ -96,7 +96,7 @@ module('Integration | Component | markdown-to-html', function(hooks) {
     });
 
     this.markdown =  'this is an ember showdown!'
-    await render(hbs`{{markdown-to-html this.markdown extensions='demo'}}`);
+    await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} @extensions="demo" />`);
 
     let expectedHtml = "<p>no it isn't!</p>\n";
     assert.strictEqual(this.element.querySelector('div').innerHTML, expectedHtml);
@@ -109,7 +109,7 @@ module('Integration | Component | markdown-to-html', function(hooks) {
     showdown.setOption('strikethrough', true);
 
     this.markdown =  '~~dislike~~';
-    await render(hbs`{{markdown-to-html this.markdown}}`);
+    await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} />`);
 
 
     let expectedHtml = '<p><del>dislike</del></p>\n';
@@ -147,7 +147,7 @@ module('Integration | Component | markdown-to-html', function(hooks) {
     });
 
     this.markdown =  'this is a showdown';
-    await render(hbs`{{markdown-to-html this.markdown extensions='demo excited'}}`);
+    await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} @extensions="demo excited" />`);
 
     let expectedHtml = '<p>this is an ember showdown!</p>\n';
     assert.strictEqual(this.element.querySelector('div').innerHTML, expectedHtml);
@@ -157,7 +157,7 @@ module('Integration | Component | markdown-to-html', function(hooks) {
     assert.expect(1);
 
     this.markdown =  '```html\n<strong>hello</strong>\n<em>world</em>\n```';
-    await render(hbs`{{markdown-to-html this.markdown ghCodeBlocks=true}}`);
+    await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} @ghCodeBlocks={{true}} />`);
 
     let expectedHtml =
       '<pre><code class="html language-html">&lt;strong&gt;hello&lt;/strong&gt;\n&lt;em&gt;world&lt;/em&gt;\n</code></pre>\n';
