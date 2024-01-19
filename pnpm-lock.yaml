@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^5.7.2
     version: 5.13.0
   ember-try:
-    specifier: github:ember-cli/ember-try
-    version: github.com/ember-cli/ember-try/8fca8fc3aad863c5902a965287d728415a4a4663
+    specifier: ^3.0.0
+    version: 3.0.0
   eslint:
     specifier: ^8.37.0
     version: 8.56.0
@@ -4947,6 +4947,26 @@ packages:
       semver: 7.5.4
     transitivePeerDependencies:
       - encoding
+    dev: true
+
+  /ember-try@3.0.0:
+    resolution: {integrity: sha512-ZYVKYWMnrHSD3vywo7rV76kPCOC9ATIEnGGG/PEKfCcFE0lB26jltRDnOrhORfLKq0JFp62fFxC/4940U+MwRQ==}
+    engines: {node: 16.* || >= 18.*}
+    dependencies:
+      chalk: 4.1.2
+      cli-table3: 0.6.3
+      core-object: 3.1.5
+      debug: 4.3.4
+      ember-try-config: 4.0.0
+      execa: 4.1.0
+      fs-extra: 6.0.1
+      resolve: 1.22.8
+      rimraf: 3.0.2
+      semver: 7.5.4
+      walk-sync: 2.2.0
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
     dev: true
 
   /emoji-regex@7.0.3:
@@ -10013,11 +10033,6 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /temp-dir@2.0.0:
-    resolution: {integrity: sha512-aoBAniQmmwtcKp/7BzsH8Cxzv8OL736p7v1ihGb5e9DJ9kTwGWHrQrVB5+lfVDzfGrdRzXch+ig7LHaY1JTOrg==}
-    engines: {node: '>=8'}
-    dev: true
-
   /temp@0.9.4:
     resolution: {integrity: sha512-yYrrsWnrXMcdsnu/7YMYAofM1ktpL5By7vZhf15CrXijWWrEYZks5AXBudalfSWJLlnen/QUJUB5aoB0kqZUGA==}
     engines: {node: '>=6.0.0'}
@@ -10947,29 +10962,6 @@ packages:
   /yocto-queue@1.0.0:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
-    dev: true
-
-  github.com/ember-cli/ember-try/8fca8fc3aad863c5902a965287d728415a4a4663:
-    resolution: {tarball: https://codeload.github.com/ember-cli/ember-try/tar.gz/8fca8fc3aad863c5902a965287d728415a4a4663}
-    name: ember-try
-    version: 3.0.0
-    engines: {node: 16.* || >= 18.*}
-    dependencies:
-      chalk: 4.1.2
-      cli-table3: 0.6.3
-      core-object: 3.1.5
-      debug: 4.3.4
-      ember-try-config: 4.0.0
-      execa: 4.1.0
-      fs-extra: 6.0.1
-      resolve: 1.22.8
-      rimraf: 3.0.2
-      semver: 7.5.4
-      temp-dir: 2.0.0
-      walk-sync: 2.2.0
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
     dev: true
 
   github.com/mansona/auto-changelog/6309eecfec6ef5aa18086074304f73964aa11f11:
