@@ -10,7 +10,7 @@ module('Integration | Component | markdown-to-html', function(hooks) {
 
   test('it renders', async function(assert) {
     this.set('markdown', '*hello world*');
-    await render(hbs`{{markdown-to-html this.markdown}}`);
+    await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} />`);
 
     assert.strictEqual(this.element.querySelector('div').innerHTML.trim(), '<p><em>hello world</em></p>');
   });
@@ -28,9 +28,9 @@ module('Integration | Component | markdown-to-html', function(hooks) {
 
   test('it produces markdown', async function(assert) {
     this.markdown = '##Hello, [world](#)';
-    await render(hbs`{{markdown-to-html this.markdown}}`);
+    await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} />`);
 
-    let expectedHtml = '<h2 id="helloworld">Hello, <a href="#">world</a></h2>\n';
+    let expectedHtml = '<h2 id="helloworld">Hello, <a href="#">world</a></h2>';
 
     assert.strictEqual(
       this
@@ -43,21 +43,21 @@ module('Integration | Component | markdown-to-html', function(hooks) {
 
   test('it inserts <br> tag', async function(assert) {
     this.markdown = 'foo  \nbar';
-    await render(hbs`{{markdown-to-html this.markdown}}`);
+    await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} />`);
 
     let actualHtml = this.element.querySelector('div').innerHTML;
 
-    assert.strictEqual(actualHtml, '<p>foo<br>\nbar</p>\n');
+    assert.strictEqual(actualHtml, '<p>foo<br>\nbar</p>');
   });
 
   test('supports setting showdown options', async function(assert) {
     assert.expect(1);
 
     this.markdown = '# title\nI ~~dislike~~ enjoy visiting http://www.google.com';
-    await render(hbs`{{markdown-to-html this.markdown simplifiedAutoLink=true headerLevelStart=3 strikethrough=true}}`);
+    await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} @simplifiedAutoLink={{true}} @headerLevelStart={{3}} @strikethrough={{true }} />`);
 
     let expectedHtml =
-      '<h3 id="title">title</h3>\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>\n';
+      '<h3 id="title">title</h3>\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
 
     assert.strictEqual(this.element.querySelector('div').innerHTML, expectedHtml);
   });
@@ -72,10 +72,10 @@ module('Integration | Component | markdown-to-html', function(hooks) {
     });
 
     this.markdown = '# title\nI ~~dislike~~ enjoy visiting http://www.google.com';
-    await render(hbs`{{markdown-to-html this.markdown headerLevelStart=3 strikethrough=true}}`);
+    await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} @headerLevelStart={{3}} @strikethrough={{true}} />`);
 
     let expectedHtml =
-      '<h3 id="title">title</h3>\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>\n';
+      '<h3 id="title">title</h3>\n<p>I <del>dislike</del> enjoy visiting <a href="http://www.google.com">http://www.google.com</a></p>';
 
     assert.strictEqual(this.element.querySelector('div').innerHTML, expectedHtml);
   });
@@ -96,9 +96,9 @@ module('Integration | Component | markdown-to-html', function(hooks) {
     });
 
     this.markdown =  'this is an ember showdown!'
-    await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} @extensions="demo" />`);
+    await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} @extensions={{"demo"}} />`);
 
-    let expectedHtml = "<p>no it isn't!</p>\n";
+    let expectedHtml = "<p>no it isn't!</p>";
     assert.strictEqual(this.element.querySelector('div').innerHTML, expectedHtml);
   });
 
@@ -112,7 +112,7 @@ module('Integration | Component | markdown-to-html', function(hooks) {
     await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} />`);
 
 
-    let expectedHtml = '<p><del>dislike</del></p>\n';
+    let expectedHtml = '<p><del>dislike</del></p>';
 
     assert.strictEqual(this.element.querySelector('div').innerHTML, expectedHtml);
 
@@ -149,7 +149,7 @@ module('Integration | Component | markdown-to-html', function(hooks) {
     this.markdown =  'this is a showdown';
     await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} @extensions="demo excited" />`);
 
-    let expectedHtml = '<p>this is an ember showdown!</p>\n';
+    let expectedHtml = '<p>this is an ember showdown!</p>';
     assert.strictEqual(this.element.querySelector('div').innerHTML, expectedHtml);
   });
 
@@ -160,7 +160,7 @@ module('Integration | Component | markdown-to-html', function(hooks) {
     await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} @ghCodeBlocks={{true}} />`);
 
     let expectedHtml =
-      '<pre><code class="html language-html">&lt;strong&gt;hello&lt;/strong&gt;\n&lt;em&gt;world&lt;/em&gt;\n</code></pre>\n';
+      '<pre><code class="html language-html">&lt;strong&gt;hello&lt;/strong&gt;\n&lt;em&gt;world&lt;/em&gt;\n</code></pre>';
     assert.strictEqual(this.element.querySelector('div').innerHTML, expectedHtml);
   });
 });
