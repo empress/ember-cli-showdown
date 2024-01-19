@@ -1,44 +1,35 @@
-/* eslint-disable ember/no-classic-components, ember/no-classic-classes, ember/require-tagless-components, prettier/prettier, ember/no-assignment-of-untracked-properties-used-in-tracking-contexts, ember/no-get, no-prototype-builtins */
+/* eslint-disable  prettier/prettier, no-prototype-builtins */
+
 import showdown from 'showdown';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { htmlSafe } from '@ember/template';
-import { get, computed } from '@ember/object';
 import { getOwner } from '@ember/application';
-import layout from '../templates/components/markdown-to-html';
 
 const CONFIG_LOOKUP = 'config:environment';
 
-const ShowdownComponent = Component.extend({
-  layout,
-  markdown: '',
-  extensions: null,
+export default class ShowdownComponent extends Component {
+  _globalOptions = null
 
-  _globalOptions: null,
-
-  defaultOptionKeys: computed(function() {
+  get defaultOptionKeys() {
     return Object.keys(showdown.getDefaultOptions());
-  }).readOnly(),
+  }
 
-  init() {
-    this._super(...arguments);
+  constructor() {
+    super(...arguments);
     const owner = getOwner(this);
-
-    if (!this.extensions) {
-      this.extensions = [];
-    }
 
     if (owner && owner.hasRegistration(CONFIG_LOOKUP)) {
       this._globalOptions = (
         owner.resolveRegistration(CONFIG_LOOKUP) || {}
       ).showdown;
     }
-  },
+  }
 
-  html: computed('converter', 'defaultOptionKeys', 'markdown', function() {
+  get html() {
     let showdownOptions = this.getShowdownProperties(
-      get(this, 'defaultOptionKeys')
+      this.defaultOptionKeys
     );
-    let converter = get(this, 'converter');
+    let converter = this.converter;
 
     for (let option in showdownOptions) {
       if (
@@ -49,25 +40,25 @@ const ShowdownComponent = Component.extend({
       }
     }
 
-    return htmlSafe(converter.makeHtml(get(this, 'markdown')));
-  }).readOnly(),
+    return htmlSafe(converter.makeHtml(this.args.markdown));
+  }
 
-  converter: computed('extensions', function() {
-    let extensions = get(this, 'extensions');
+  get converter() {
+    let extensions = this.args.extensions ?? [];
 
     if (typeof extensions === 'string') {
       extensions = extensions.split(' ');
     }
 
     return new showdown.Converter({ extensions });
-  }),
+  }
 
   getShowdownProperties(keyNames) {
     return keyNames.reduce((accumulator, keyName) => {
-      let value = get(this, keyName);
+      let value = this.args[keyName];
 
       if (value === undefined && this._globalOptions) {
-        value = get(this._globalOptions, keyName);
+        value = this._globalOptions[keyName];
       }
 
       accumulator[keyName] = value;
@@ -75,10 +66,5 @@ const ShowdownComponent = Component.extend({
       return accumulator;
     }, {});
   }
-});
+}
 
-ShowdownComponent.reopenClass({
-  positionalParams: ['markdown']
-});
-
-export default ShowdownComponent;
