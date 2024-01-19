@@ -1,4 +1,25 @@
 # Changelog
+## Release (2024-01-19)
+
+ember-cli-showdown 8.0.0 (major)
+
+#### :boom: Breaking Change
+* `ember-cli-showdown`
+  * [#136](https://github.com/empress/ember-cli-showdown/pull/136) drop support for Ember < 3.16 ([@mansona](https://github.com/mansona))
+
+#### :rocket: Enhancement
+* `ember-cli-showdown`
+  * [#131](https://github.com/empress/ember-cli-showdown/pull/131) Convert to Glimmer component ([@jaredgalanis](https://github.com/jaredgalanis))
+
+#### :house: Internal
+* `ember-cli-showdown`
+  * [#135](https://github.com/empress/ember-cli-showdown/pull/135) update lint-to-the-future dashboard action ([@mansona](https://github.com/mansona))
+  * [#132](https://github.com/empress/ember-cli-showdown/pull/132) setup release-plan ([@mansona](https://github.com/mansona))
+  * [#129](https://github.com/empress/ember-cli-showdown/pull/129) add lint-to-the-future dashboard ([@mansona](https://github.com/mansona))
+
+#### Committers: 2
+- Chris Manson ([@mansona](https://github.com/mansona))
+- Jared Galanis ([@jaredgalanis](https://github.com/jaredgalanis))
 
 v7.0.0 / 2023-07-02
 ==================
