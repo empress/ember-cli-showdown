@@ -21,7 +21,7 @@ This addon provides a component that transforms [Markdown](http://en.wikipedia.o
 Passing a markdown string inline:
 
 ```handlebars
-{{markdown-to-html "#Markdown is cool [link](http://emberjs.com)"}}
+<MarkdownToHtml @markdown={{"#Markdown is cool [link](http://emberjs.com)"}} />
 ```
 
 ```html
@@ -32,7 +32,7 @@ Passing a markdown string inline:
 You can also pass a bound value:
 
 ```handlebars
-{{markdown-to-html postContent}}
+<MarkdownToHtml @markdown={{postContent}} />
 ```
 
 ### Showdown Options
@@ -40,11 +40,12 @@ You can also pass a bound value:
 You can use [configuration settings from Showdown][showdown-config]:
 
 ```handlebars
-{{markdown-to-html
-  markdown=postContent
-  strikethrough=true
-  literalMidWordUnderscores=true
-  simplifiedAutoLink=true}}
+<MarkdownToHtml
+  @markdown={{postContent}}
+  @strikethrough={{true}}
+  @literalMidWordUnderscores={{true}}
+  @simplifiedAutoLink={{true}}
+/>
 ```
 
 [showdown-config]: https://github.com/showdownjs/showdown#valid-options
@@ -75,15 +76,17 @@ You can load [Showdown Extensions](https://github.com/showdownjs/showdown/wiki/e
 "extensions" property when initializing your component:
 
 ```handlebars
-{{markdown-to-html
-  markdown=postContent
-  extensions=myExtensionList}}
+<MarkdownToHtml
+  @markdown={{postContent}}
+  @extensions={{myExtensionList}}
+/>
 ```
 
 ```handlebars
-{{markdown-to-html
-  markdown=postContent
-  extensions='foo bar baz'}}
+<MarkdownToHtml
+  @markdown={{postContent}}
+  @extensions={{'foo bar baz'}}
+/>
 ```
 
 (`myExtensionList` can be an array of strings or a space separated string)
@@ -117,6 +120,10 @@ export default {
 
 * Global `showdown` is no longer supported.  Must be imported via `import showdown from 'showdown'`
 * Remove any use of `FastBoot.require('require')` with `import showdown from 'showdown'`
+
+## 7.x to 8.x migration
+
+* Positional parameters are no longer supported. Use the `@markdown` argument to provide the markdown content to `<MarkdownToHtml />`.
 
 ## Dependencies
 * [Showdown](https://github.com/showdownjs/showdown)
