@@ -1,21 +1,25 @@
 {
   "solution": {
     "ember-cli-showdown": {
-      "impact": "minor",
-      "oldVersion": "8.0.0",
-      "newVersion": "8.1.0",
+      "impact": "major",
+      "oldVersion": "8.1.0",
+      "newVersion": "9.0.0",
       "constraints": [
+        {
+          "impact": "major",
+          "reason": "Appears in changelog section :boom: Breaking Change"
+        },
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
         },
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :memo: Documentation"
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2024-02-07)\n\nember-cli-showdown 8.1.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-cli-showdown`\n  * [#139](https://github.com/empress/ember-cli-showdown/pull/139) feat: allow passing in html attributes like class ([@colenso](https://github.com/colenso))\n\n#### :memo: Documentation\n* `ember-cli-showdown`\n  * [#138](https://github.com/empress/ember-cli-showdown/pull/138) Update README.md to reflect the changes in 8.0.0 ([@SanderKnauff](https://github.com/SanderKnauff))\n\n#### Committers: 2\n- Sander Knauff ([@SanderKnauff](https://github.com/SanderKnauff))\n- [@colenso](https://github.com/colenso)\n"
+  "description": "## Release (2024-02-07)\n\nember-cli-showdown 9.0.0 (major)\n\n#### :boom: Breaking Change\n* `ember-cli-showdown`\n  * [#144](https://github.com/empress/ember-cli-showdown/pull/144) drop support for node 16 ([@mansona](https://github.com/mansona))\n\n#### :rocket: Enhancement\n* `ember-cli-showdown`\n  * [#143](https://github.com/empress/ember-cli-showdown/pull/143) update showdown to v2 ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `ember-cli-showdown`\n  * [#141](https://github.com/empress/ember-cli-showdown/pull/141) update to v5.4 with ember-cli-update ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
 }
