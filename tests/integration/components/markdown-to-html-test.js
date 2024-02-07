@@ -51,8 +51,6 @@ module('Integration | Component | markdown-to-html', function(hooks) {
   });
 
   test('supports setting showdown options', async function(assert) {
-    assert.expect(1);
-
     this.markdown = '# title\nI ~~dislike~~ enjoy visiting http://www.google.com';
     await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} @simplifiedAutoLink={{true}} @headerLevelStart={{3}} @strikethrough={{true }} />`);
 
@@ -63,8 +61,6 @@ module('Integration | Component | markdown-to-html', function(hooks) {
   });
 
   test('supports setting showdown options merged with global options', async function(assert) {
-    assert.expect(1);
-
     this.owner.register('config:environment', {
       showdown: {
         simplifiedAutoLink: true
@@ -81,8 +77,6 @@ module('Integration | Component | markdown-to-html', function(hooks) {
   });
 
   test('it supports loading showdown extensions', async function(assert) {
-    assert.expect(1);
-
     showdown.extension('demo', function() {
       return [
         {
@@ -103,8 +97,6 @@ module('Integration | Component | markdown-to-html', function(hooks) {
   });
 
   test('does not reset default showdown options with undefined', async function(assert) {
-    assert.expect(1);
-
     let originalStrikeThroughValue = showdown.getOption('strikethrough');
     showdown.setOption('strikethrough', true);
 
@@ -120,8 +112,6 @@ module('Integration | Component | markdown-to-html', function(hooks) {
   });
 
   test('it supports loading multiple showdown extensions', async function(assert) {
-    assert.expect(1);
-
     showdown.extension('demo', function() {
       return [
         {
@@ -154,8 +144,6 @@ module('Integration | Component | markdown-to-html', function(hooks) {
   });
 
   test('it does not mess with code fences', async function(assert) {
-    assert.expect(1);
-
     this.markdown =  '```html\n<strong>hello</strong>\n<em>world</em>\n```';
     await render(hbs`<MarkdownToHtml @markdown={{this.markdown}} @ghCodeBlocks={{true}} />`);
 

@@ -4,12 +4,12 @@
 
 * `git clone <repository-url>`
 * `cd ember-cli-showdown`
-* `npm install`
+* `pnpm install`
 
 ## Linting
 
-* `npm run lint`
-* `npm run lint:fix`
+* `pnpm lint`
+* `pnpm lint:fix`
 
 ## Running tests
 
