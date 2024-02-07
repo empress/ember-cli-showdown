@@ -10,7 +10,7 @@ This addon provides a component that transforms [Markdown](http://en.wikipedia.o
 
 * Ember.js v3.16 or above
 * Ember CLI v3.16 or above
-* Node.js v16 or above
+* Node.js v18 or above
 
 ## Installation
 

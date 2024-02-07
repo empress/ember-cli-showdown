@@ -8,7 +8,7 @@ on:
   pull_request: {}
 
 env:
-  NODE_VERSION: 16
+  NODE_VERSION: 18
   FORCE_COLOR: 1
 
 concurrency:
