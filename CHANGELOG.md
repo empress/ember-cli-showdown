@@ -1,6 +1,24 @@
 # Changelog
 ## Release (2024-02-07)
 
+ember-cli-showdown 9.0.0 (major)
+
+#### :boom: Breaking Change
+* `ember-cli-showdown`
+  * [#144](https://github.com/empress/ember-cli-showdown/pull/144) drop support for node 16 ([@mansona](https://github.com/mansona))
+
+#### :rocket: Enhancement
+* `ember-cli-showdown`
+  * [#143](https://github.com/empress/ember-cli-showdown/pull/143) update showdown to v2 ([@mansona](https://github.com/mansona))
+
+#### :house: Internal
+* `ember-cli-showdown`
+  * [#141](https://github.com/empress/ember-cli-showdown/pull/141) update to v5.4 with ember-cli-update ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+## Release (2024-02-07)
+
 ember-cli-showdown 8.1.0 (minor)
 
 #### :rocket: Enhancement
