@@ -1,4 +1,19 @@
 # Changelog
+## Release (2024-02-07)
+
+ember-cli-showdown 8.1.0 (minor)
+
+#### :rocket: Enhancement
+* `ember-cli-showdown`
+  * [#139](https://github.com/empress/ember-cli-showdown/pull/139) feat: allow passing in html attributes like class ([@colenso](https://github.com/colenso))
+
+#### :memo: Documentation
+* `ember-cli-showdown`
+  * [#138](https://github.com/empress/ember-cli-showdown/pull/138) Update README.md to reflect the changes in 8.0.0 ([@SanderKnauff](https://github.com/SanderKnauff))
+
+#### Committers: 2
+- Sander Knauff ([@SanderKnauff](https://github.com/SanderKnauff))
+- [@colenso](https://github.com/colenso)
 ## Release (2024-01-19)
 
 ember-cli-showdown 8.0.0 (major)
