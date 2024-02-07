@@ -85,7 +85,7 @@ You can load [Showdown Extensions](https://github.com/showdownjs/showdown/wiki/e
 ```handlebars
 <MarkdownToHtml
   @markdown={{postContent}}
-  @extensions={{'foo bar baz'}}
+  @extensions="foo bar baz"
 />
 ```
 
