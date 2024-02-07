@@ -37,7 +37,7 @@
     "ember-auto-import": "^2.6.3",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-htmlbars": "^6.3.0",
-    "showdown": "^1.8.6"
+    "showdown": "^2.1.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
