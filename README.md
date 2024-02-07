@@ -21,7 +21,7 @@ This addon provides a component that transforms [Markdown](http://en.wikipedia.o
 Passing a markdown string inline:
 
 ```handlebars
-<MarkdownToHtml @markdown={{"#Markdown is cool [link](http://emberjs.com)"}} />
+<MarkdownToHtml @markdown="#Markdown is cool [link](http://emberjs.com)" />
 ```
 
 ```html
