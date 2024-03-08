@@ -1,4 +1,14 @@
 # Changelog
+## Release (2024-03-08)
+
+ember-cli-showdown 9.0.1 (patch)
+
+#### :bug: Bug Fix
+* `ember-cli-showdown`
+  * [#147](https://github.com/empress/ember-cli-showdown/pull/147) fix peer dependency ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
 ## Release (2024-02-07)
 
 ember-cli-showdown 9.0.0 (major)
