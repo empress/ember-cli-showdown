@@ -1,4 +1,16 @@
 # Changelog
+
+## Release (2025-05-14)
+
+* ember-cli-showdown 9.0.2 (patch)
+
+#### :house: Internal
+* `ember-cli-showdown`
+  * [#152](https://github.com/empress/ember-cli-showdown/pull/152) fix lttf dashboard action - install pnpm ([@mansona](https://github.com/mansona))
+  * [#153](https://github.com/empress/ember-cli-showdown/pull/153) Update pnpm ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
 ## Release (2024-03-08)
 
 ember-cli-showdown 9.0.1 (patch)
