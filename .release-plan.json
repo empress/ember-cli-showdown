@@ -2,16 +2,21 @@
   "solution": {
     "ember-cli-showdown": {
       "impact": "patch",
-      "oldVersion": "9.0.0",
-      "newVersion": "9.0.1",
+      "oldVersion": "9.0.1",
+      "newVersion": "9.0.2",
+      "tagName": "latest",
       "constraints": [
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2024-03-08)\n\nember-cli-showdown 9.0.1 (patch)\n\n#### :bug: Bug Fix\n* `ember-cli-showdown`\n  * [#147](https://github.com/empress/ember-cli-showdown/pull/147) fix peer dependency ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
+  "description": "## Release (2025-09-26)\n\n* ember-cli-showdown 9.0.2 (patch)\n\n#### :bug: Bug Fix\n* `ember-cli-showdown`\n  * [#155](https://github.com/empress/ember-cli-showdown/pull/155) remove ember-source from peer dependencies ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `ember-cli-showdown`\n  * [#152](https://github.com/empress/ember-cli-showdown/pull/152) fix lttf dashboard action - install pnpm ([@mansona](https://github.com/mansona))\n  * [#153](https://github.com/empress/ember-cli-showdown/pull/153) Update pnpm ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
 }
