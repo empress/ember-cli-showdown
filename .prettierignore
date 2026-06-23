@@ -13,3 +13,4 @@
 /.node_modules.ember-try/
 
 CHANGELOG.md
+pnpm-lock.yaml
