@@ -159,6 +159,9 @@ importers:
       release-plan:
         specifier: ^0.16.0
         version: 0.16.0
+      rollup:
+        specifier: ^4.62.2
+        version: 4.62.2
       testem:
         specifier: ^3.20.1
         version: 3.20.1(@babel/core@7.27.1)(handlebars@4.7.8)(underscore@1.13.7)
