@@ -12,16 +12,26 @@
   "repository": "https://github.com/empress/ember-cli-showdown",
   "license": "MIT",
   "author": "",
+  "exports": {
+    ".": {
+      "ember-addon-development-ember-cli-showdown": "./src/index.js",
+      "default": "./dist/index.js"
+    },
+    "./addon-main.js": "./addon-main.cjs",
+    "./*": {
+      "default": "./dist/*.js"
+    }
+  },
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
   "files": [
     "addon-main.cjs",
     "declarations",
     "dist",
     "src"
   ],
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
   "scripts": {
     "build": "rollup --config",
     "format": "prettier . --cache --write",
@@ -29,13 +39,13 @@
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
     "lint:format": "prettier . --cache --check",
     "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
-    "lint:js": "eslint . --cache",
     "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:publish": "pnpm build && publint run --level error",
+    "prepack": "rollup --config",
     "start": "vite dev",
-    "test": "vite build --mode=development --out-dir dist-tests && testem --file testem.cjs ci --port 0",
-    "prepack": "rollup --config"
+    "test": "vite build --mode=development --out-dir dist-tests && testem --file testem.cjs ci --port 0"
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.8.9",
@@ -89,7 +99,7 @@
     "publint": "^0.3.21",
     "qunit": "^2.20.0",
     "qunit-dom": "^3.5.1",
-    "release-plan": "^0.16.0",
+    "release-plan": "^0.18.0",
     "rollup": "^4.62.2",
     "testem": "^3.20.1",
     "vite": "^8.0.16"
@@ -108,16 +118,6 @@
     "demoURL": "https://empress.github.io/ember-cli-showdown/",
     "app-js": {
       "./components/markdown-to-html.js": "./dist/_app_/components/markdown-to-html.js"
-    }
-  },
-  "exports": {
-    ".": {
-      "ember-addon-development-ember-cli-showdown": "./src/index.js",
-      "default": "./dist/index.js"
-    },
-    "./addon-main.js": "./addon-main.cjs",
-    "./*": {
-      "default": "./dist/*.js"
     }
   }
 }
