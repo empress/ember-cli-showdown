@@ -40,7 +40,6 @@
   "dependencies": {
     "@embroider/addon-shim": "^1.8.9",
     "decorator-transforms": "^2.2.2",
-    "ember-auto-import": "^2.6.3",
     "showdown": "^2.1.0"
   },
   "devDependencies": {
