@@ -2,8 +2,9 @@ import { Textarea } from '@ember/component';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { MarkdownToHtml } from 'ember-cli-showdown';
+import RouteTemplate from 'ember-route-template';
 
-export default class ApplicationRoute extends Component {
+class ApplicationRoute extends Component {
   @tracked
   editableText = '**TODO** _edit me_';
 
@@ -29,3 +30,5 @@ export default class ApplicationRoute extends Component {
     {{outlet}}
   </template>
 }
+
+export default RouteTemplate(ApplicationRoute);

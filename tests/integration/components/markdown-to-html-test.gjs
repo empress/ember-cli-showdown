@@ -9,9 +9,9 @@ module('Integration | Component | markdown-to-html', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    this.set('markdown', '*hello world*');
+    const markdown = '*hello world*';
     await render(
-      <template><MarkdownToHtml @markdown={{this.markdown}} /></template>,
+      <template><MarkdownToHtml @markdown={{markdown}} /></template>,
     );
 
     assert.strictEqual(
@@ -27,9 +27,9 @@ module('Integration | Component | markdown-to-html', function (hooks) {
   });
 
   test('it produces markdown', async function (assert) {
-    this.markdown = '##Hello, [world](#)';
+    const markdown = '##Hello, [world](#)';
     await render(
-      <template><MarkdownToHtml @markdown={{this.markdown}} /></template>,
+      <template><MarkdownToHtml @markdown={{markdown}} /></template>,
     );
 
     let expectedHtml = '<h2 id="helloworld">Hello, <a href="#">world</a></h2>';
@@ -41,9 +41,9 @@ module('Integration | Component | markdown-to-html', function (hooks) {
   });
 
   test('it inserts <br> tag', async function (assert) {
-    this.markdown = 'foo  \nbar';
+    const markdown = 'foo  \nbar';
     await render(
-      <template><MarkdownToHtml @markdown={{this.markdown}} /></template>,
+      <template><MarkdownToHtml @markdown={{markdown}} /></template>,
     );
 
     let actualHtml = this.element.querySelector('div').innerHTML;
@@ -52,12 +52,12 @@ module('Integration | Component | markdown-to-html', function (hooks) {
   });
 
   test('supports setting showdown options', async function (assert) {
-    this.markdown =
+    const markdown =
       '# title\nI ~~dislike~~ enjoy visiting http://www.google.com';
     await render(
       <template>
         <MarkdownToHtml
-          @markdown={{this.markdown}}
+          @markdown={{markdown}}
           @simplifiedAutoLink={{true}}
           @headerLevelStart={{3}}
           @strikethrough={{true}}
@@ -81,12 +81,12 @@ module('Integration | Component | markdown-to-html', function (hooks) {
       },
     });
 
-    this.markdown =
+    const markdown =
       '# title\nI ~~dislike~~ enjoy visiting http://www.google.com';
     await render(
       <template>
         <MarkdownToHtml
-          @markdown={{this.markdown}}
+          @markdown={{markdown}}
           @headerLevelStart={{3}}
           @strikethrough={{true}}
         />
@@ -115,10 +115,10 @@ module('Integration | Component | markdown-to-html', function (hooks) {
       ];
     });
 
-    this.markdown = 'this is an ember showdown!';
+    const markdown = 'this is an ember showdown!';
     await render(
       <template>
-        <MarkdownToHtml @markdown={{this.markdown}} @extensions="demo" />
+        <MarkdownToHtml @markdown={{markdown}} @extensions="demo" />
       </template>,
     );
 
@@ -133,9 +133,9 @@ module('Integration | Component | markdown-to-html', function (hooks) {
     let originalStrikeThroughValue = showdown.getOption('strikethrough');
     showdown.setOption('strikethrough', true);
 
-    this.markdown = '~~dislike~~';
+    const markdown = '~~dislike~~';
     await render(
-      <template><MarkdownToHtml @markdown={{this.markdown}} /></template>,
+      <template><MarkdownToHtml @markdown={{markdown}} /></template>,
     );
 
     let expectedHtml = '<p><del>dislike</del></p>';
@@ -173,13 +173,10 @@ module('Integration | Component | markdown-to-html', function (hooks) {
       ];
     });
 
-    this.markdown = 'this is a showdown';
+    const markdown = 'this is a showdown';
     await render(
       <template>
-        <MarkdownToHtml
-          @markdown={{this.markdown}}
-          @extensions="demo excited"
-        />
+        <MarkdownToHtml @markdown={{markdown}} @extensions="demo excited" />
       </template>,
     );
 
@@ -191,10 +188,10 @@ module('Integration | Component | markdown-to-html', function (hooks) {
   });
 
   test('it does not mess with code fences', async function (assert) {
-    this.markdown = '```html\n<strong>hello</strong>\n<em>world</em>\n```';
+    const markdown = '```html\n<strong>hello</strong>\n<em>world</em>\n```';
     await render(
       <template>
-        <MarkdownToHtml @markdown={{this.markdown}} @ghCodeBlocks={{true}} />
+        <MarkdownToHtml @markdown={{markdown}} @ghCodeBlocks={{true}} />
       </template>,
     );
 
