@@ -1,5 +1,8 @@
+/tmp/
+
 # compiled output
 /dist/
+/dist-tests/
 /declarations/
 
 # dependencies
