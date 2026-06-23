@@ -1,9 +1,0 @@
-{{! template-lint-disable require-input-label no-curly-component-invocation no-implicit-this }}
-<h2 id="title">ember-cli-showdown demo</h2>
-
-<Textarea @value={{this.editableText}} />
-<MarkdownToHtml @markdown={{this.editableText}}/>
-
-<MarkdownToHtml @markdown={{"#Markdown is cool [link](https://google.com)"}} />
-
-{{outlet}}
