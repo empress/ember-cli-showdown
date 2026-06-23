@@ -1,14 +1,14 @@
 {
   "solution": {
     "ember-cli-showdown": {
-      "impact": "patch",
-      "oldVersion": "9.0.1",
-      "newVersion": "9.0.2",
+      "impact": "major",
+      "oldVersion": "9.0.2",
+      "newVersion": "10.0.0",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "impact": "major",
+          "reason": "Appears in changelog section :boom: Breaking Change"
         },
         {
           "impact": "patch",
@@ -18,5 +18,5 @@
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2025-09-26)\n\n* ember-cli-showdown 9.0.2 (patch)\n\n#### :bug: Bug Fix\n* `ember-cli-showdown`\n  * [#155](https://github.com/empress/ember-cli-showdown/pull/155) remove ember-source from peer dependencies ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `ember-cli-showdown`\n  * [#152](https://github.com/empress/ember-cli-showdown/pull/152) fix lttf dashboard action - install pnpm ([@mansona](https://github.com/mansona))\n  * [#153](https://github.com/empress/ember-cli-showdown/pull/153) Update pnpm ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
+  "description": "## Release (2026-06-23)\n\n* ember-cli-showdown 10.0.0 (major)\n\n#### :boom: Breaking Change\n* `ember-cli-showdown`\n  * [#156](https://github.com/empress/ember-cli-showdown/pull/156) Drop support for Ember < 3.28 and Convert to v2 addon ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `ember-cli-showdown`\n  * [#159](https://github.com/empress/ember-cli-showdown/pull/159) update release plan ([@mansona](https://github.com/mansona))\n  * [#158](https://github.com/empress/ember-cli-showdown/pull/158) add missing devDependency ember-route-template ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
 }
