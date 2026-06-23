@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2026-06-23)
+
+* ember-cli-showdown 10.0.0 (major)
+
+#### :boom: Breaking Change
+* `ember-cli-showdown`
+  * [#156](https://github.com/empress/ember-cli-showdown/pull/156) Drop support for Ember < 3.28 and Convert to v2 addon ([@mansona](https://github.com/mansona))
+
+#### :house: Internal
+* `ember-cli-showdown`
+  * [#159](https://github.com/empress/ember-cli-showdown/pull/159) update release plan ([@mansona](https://github.com/mansona))
+  * [#158](https://github.com/empress/ember-cli-showdown/pull/158) add missing devDependency ember-route-template ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
 ## Release (2025-09-26)
 
 * ember-cli-showdown 9.0.2 (patch)
